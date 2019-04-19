@@ -9,6 +9,7 @@
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/sfy.png" /></p>
 
 <h3>兼容性极好的双飞翼布局</h3>
+
 ```
 <style>
     * { margin: 0; box-sizing: border-box; }
@@ -30,6 +31,7 @@
 ```
 
 <h3>flex实现双飞翼</h3>
+
 ```
 <style>
     * { margin: 0; box-sizing: border-box; }
@@ -52,6 +54,7 @@
 
 <h2>多行文字垂直居中(非flex)</h2>
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/vertical-centering.png" /></p>
+
 ```
 ##box1
 <style>
@@ -82,6 +85,7 @@
 
 <h2>自适应排版 table-cell</h2>
 <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/self-adaption__table-cell.png" />
+
 ```
 <style>
     .left { float: left; width: 100px; background-color: pink; }
@@ -108,6 +112,7 @@
 <p>注意，设为 Flex 布局以后，子元素的 float、clear 和 vertical-align 属性将失效。</p>
 
 <h3>容器属性:</h3>
+
 - `flex-direction`: row | row-reverse | column | column-reverse;
     - row(默认值)：主轴为水平方向，起点在左端。
     - row-reverse：主轴为追评方向，起点在右端。
@@ -160,6 +165,7 @@
 - `align-self`: auto | flex-start | flex-end | center | baseline | stretch
 
 <h2>Reset的选择</h2>
+
 - *的杀伤力太大!!!
 - Reset.css 重置 Normalize.css修复 Neat.css融合<sup>(当前目录下有)</sup>
 - html{box-sizing: border-box;} *,*:before,X:after{box-sizing: inherit;}<sup>(移动端都要以怪异盒模型排版)</sup>
@@ -174,6 +180,7 @@
 - font-family: sans-serif;系统默认，字体多个单词组成加引号。
 
 <h3>有关设计的JS</h3>
+
 - underline.js
 - responsify.js
 - typedetail.com
@@ -182,6 +189,7 @@
 
 <h2>CSS代码检测团队项目规范</h2>
 <h3>CSS HINT <sup>& <a href="http://csslint.net/">css Lint</a></sup></h3>
+
 1. 不要使用多个class选择元素，如a.foo.boo，这在ie6及以下不能正确解析
 2. 移除空的css规则，如a{}
 3. 正确的使用显示属性，如display:inline不要和width，height，float，margin,padding同时使用，display:inline-block不要和float同时使用等
@@ -197,6 +205,7 @@
 13. 遵守盒模型规则
 
 <h2>CSS绘制高级技巧</h2>
+
 1. <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/css-jq01.png" />
 2. <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/css-jq02.png" />
 3. <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/css-jq03.png" />
@@ -207,6 +216,7 @@
 <h2>BFC IFC GFC FFC<sup>具体看ppt</sup></h2>
 
 <h3>哪些元素会生成BFC?</h3>
+
 - 根元素
 - float属性不为none
 - position为absolute或fixed
