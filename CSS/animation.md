@@ -15,7 +15,7 @@ https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
 <p>动画会覆盖所有常规规则，但会被`!important`规则覆盖。</p>
 <p>如果在某个时间点有多个动画指定同一属性的行为，则动画名称值中最后出现的动画将覆盖该点的其他动画。</p>
 <p><code>&lt;single-animation&gt;</code> = <code>&lt;animation-duration&gt;</code> || <code>&lt;timing-function&gt;</code> || <code>&lt;animation-iteration-count&gt;</code> || <code>&lt;animation-direction&gt;</code> || <code>&lt;animation-fill-mode&gt;</code> || <code>&lt;animation-play-state&gt;</code> || [none | <code>&lt;keyframes-name&gt;</code>]</p>
-<p><img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/animation-fill-mode.png" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/animation-fill-mode.png" /></p>
 <table>
   <tr>
     <th>属性</th>
@@ -80,7 +80,6 @@ https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
 
 <h3 id="forwards1">forwards1</h3>
 <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/animation-fill-mode%7Bforwards1%7D.gif" />
-<a href="htmlpreview.github.io/?https://github.com/rel-start/Notes/blob/master/CSS/animation-fill-mode%7Bforwards1%7D.html">aa</a>
 ```javascript
 ###forwards1
 <style>
