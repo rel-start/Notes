@@ -21,13 +21,13 @@ html5标签http://www.w3school.com.cn/tags/index.asp
 - `<footer>`标签：页脚，页面的底部 或 板块底部
 - `<section>`标签：页面上的板块，用于划分页面上的不同区域，或者划分文章里不同的节（通常用于大点的板块）
 - `<article>`标签：用来在页面中表示一套结构完整且独立的内容部分（可以用来呈现论坛的一个帖子，杂志或报纸中的一篇文章，一篇博客，用户提交的评论内容，可互动的页面模块挂件等）<br/>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/article.png" />--- 独立的内容部分
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/article.png" />--- 独立的内容部分
 
 
 - `<aside>`标签
     - 1）在<article>之外使用，作为页面或站点全局的附属信息部分；最近点的形式是侧边栏（sidebar），其中的内容可以是友情链接、附属导航或广告单元等
     - 2）被包含在<article>中作为主要内容的附属信息部分，其中的内容可以是与当前文章有关的引用、词汇列表等<br/>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/aside.png" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/aside.png" />
 
 - `<time>`标签：用来表现时间或日期
 - `<menu>`标签： 1.标签定义命令的列表或菜单   。 menuitem属性
@@ -40,7 +40,7 @@ html5标签http://www.w3school.com.cn/tags/index.asp
 - `<summary>`标签：detail元素的标题
 - `<small>`标签：定义小号字体（大概0.8em）
 - `<dialog>`标签：定义一段对话<br/>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/dialog.png" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/dialog.png" />
 
 - `<mark>`：定义带有记号的文本
 - `<meter>`：定义度量衡。仅用于已知最大和最小值的度量
@@ -58,13 +58,13 @@ html5标签http://www.w3school.com.cn/tags/index.asp
 
 - `<ruby>`、`<rt>`、`<rp>`
 - `<details>`标签用于描述文档或文档某个部分的细节<br/>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/details.png" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/details.png" />
 <br/>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/figure.png" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/figure.png" />
 
 - `<keygen>`：规定用于表单的密钥生成器字段
 - `<output>`：定义不同类型的输出，比如脚本的输出<br/>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/output.png" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/output.png" />
 
 - `<datalist>`：定义选项列表
 <table>
@@ -103,7 +103,7 @@ html5标签http://www.w3school.com.cn/tags/index.asp
   </tr>
   <tr>
     <td>&lt;samp&gt;</td>
-    <td>定义样本文本。font-size: 13px; font-family: monospace;<br/><img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/samp.png" /></td>
+    <td>定义样本文本。font-size: 13px; font-family: monospace;<br/><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/samp.png" /></td>
   </tr>
   <tr>
     <td>&lt;kbd&gt;</td>

@@ -22,7 +22,7 @@
 
 <h3>Linux基本操作命令-Terminal</h3>
 <p>linux命令大全: http://man.linuxde.net/</p>
-<p><img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/linux-default-directory.png" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/linux-default-directory.png" /></p>
 
 - clear: 清理
 - ls: 列出当前目录的内容
@@ -34,12 +34,13 @@
         - 创建时间
         - 名称
     - -a 列出所有内容(包括隐藏文件)
-        - <img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/ls-a.png" />
+        - <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/ls-a.png" />
 - cd: 切换目录 linux下严格区分大小写
     - cd 相对路径(./)或绝对路径(/)
     - cd ..: 返回上一级目录
     - cd ~: 返回当前用户的目录`/home/point`
 - dir: 同ls命令
+- mv: 修改文件或目录名
 - mkdir: 创建新目录
     - mkdir 文件名{在同一目录不能创建相同的目录或文件}
 - cp: 复制. `cp 源文件 路径/复制后的文件名`

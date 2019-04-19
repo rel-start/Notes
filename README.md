@@ -3,7 +3,7 @@
 标签（空格分隔）： Notes
 
 ---
-![思维导图](https://raw.githubusercontent.com/rel-start/Notes/master/picture/notes.png)
+![思维导图](https://raw.githubusercontent.com/rel-start/Notes/picture/picture/notes.png)
 
 ### HTML
 - [同源策略](https://github.com/rel-start/Notes/blob/master/HTML/Homologous%20Policy(continue...).md)

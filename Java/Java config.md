@@ -30,12 +30,12 @@
 
 <h2>检测jdk是否完整安装</h2>
 
-- <img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/javac_01.png" />
+- <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/javac_01.png" />
 - `javac` 与 `java` 指令
 
 <h2>配置环境变量</h2>
 
-- <img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/environment%20variable.gif" />
+- <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/environment%20variable.gif" />
 - 此电脑 -> 属性 -> 高级系统设置 -> 高级 -> 环境变量 -> 系统变量
 - `JAVA_HOME`: `C:\Program Files (x86)\Java\jdk1.7.0_72`
 - `PATH`: `%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin`<sup><a href="https://zhuanlan.zhihu.com/p/32485771">JAVA环境变量的作用及配置</a></sup>

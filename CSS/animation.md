@@ -70,8 +70,8 @@ https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
     - `both`: 'forwards' 和 'backwards' 填充的效果都适用
 
 <h3 id="forwards1">forwards1</h3>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/animation-fill-mode%7Bforwards1%7D.gif" />
-
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/animation-fill-mode%7Bforwards1%7D.gif" />
+<a href="htmlpreview.github.io/?https://github.com/rel-start/Notes/blob/master/CSS/animation-fill-mode%7Bforwards1%7D.html">aa</a>
 ```javascript
 ###forwards1
 <style>
@@ -132,7 +132,7 @@ https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
 ```
 
 <h3 id="forwards2">forwards2</h3>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/animation-fill-mode%7Bforwards2%7D.gif" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/animation-fill-mode%7Bforwards2%7D.gif" />
 
 ```javascript
 ###forwards2
@@ -194,7 +194,7 @@ https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
 ```
 
 <h3 id="backwards1">backwards1</h3>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/animation-fill-mode%7Bbackwards1%7D.gif" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/animation-fill-mode%7Bbackwards1%7D.gif" />
 
 ```javascript
 <style>
@@ -255,7 +255,7 @@ https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
 ```
 
 <h3 id="backwards2">backwards2</h3>
-<img src="https://raw.githubusercontent.com/rel-start/Notes/master/picture/animation-fill-mode%7Bbackwards2%7D.gif" />
+<img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/animation-fill-mode%7Bbackwards2%7D.gif" />
 
 ```javascript
 <style>
