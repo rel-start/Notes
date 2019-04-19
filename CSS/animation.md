@@ -3,6 +3,15 @@
 
 ---
 https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
+
+<h2>Keyframes</h2>
+<h4>@keyframes = @keyframes &lt;keyframes-name&gt; </h4>
+
+- &lt;keyframes-name&gt; = &lt;custom-ident&gt; | &lt;string&gt;
+- &lt;keyframe-block&gt; = &lt;keyframe-selector&gt; { &lt;declaration-list&gt; }
+- &lt;keyframe-selector&gt; = from | to | &lt;percentage&gt;
+
+<h2>Animation</h2>
 <p>动画会覆盖所有常规规则，但会被`!important`规则覆盖。</p>
 <p>如果在某个时间点有多个动画指定同一属性的行为，则动画名称值中最后出现的动画将覆盖该点的其他动画。</p>
 <p><code>&lt;single-animation&gt;</code> = <code>&lt;animation-duration&gt;</code> || <code>&lt;timing-function&gt;</code> || <code>&lt;animation-iteration-count&gt;</code> || <code>&lt;animation-direction&gt;</code> || <code>&lt;animation-fill-mode&gt;</code> || <code>&lt;animation-play-state&gt;</code> || [none | <code>&lt;keyframes-name&gt;</code>]</p>
