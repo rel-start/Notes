@@ -44,7 +44,8 @@
 <h3>同一个dom多个css属性变换</h3>
 
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/transition-delay.gif" /></p>
-```javascript
+
+```
 <style>
     .box {  width: 100px; height: 100px; background-color: #f60; transition: width 1s .5s, height 1s 1s; }
     .box:hover { width: 300px; height: 300px; }

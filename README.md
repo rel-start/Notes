@@ -11,6 +11,8 @@
 
 ### CSS
 - [animation](https://github.com/rel-start/Notes/blob/master/CSS/animation.md)
+- [transition](https://github.com/rel-start/Notes/blob/master/CSS/transition.md)
+- [css必备技能](https://github.com/rel-start/Notes/blob/master/CSS/Essential%20skills.md)
 
 ### Linux
 - [linux基本命令](https://github.com/rel-start/Notes/blob/master/Linux/Linux%20command.md)
