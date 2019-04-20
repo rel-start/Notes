@@ -103,7 +103,10 @@
 <h2>基于移动端的PX与REM转换兼容方案</h2>
 <p>暂时没看</p>
 
-<h2>flex伸缩盒</h2>
+<h2>Grid布局</h2>
+<p>详细看ppt</p>
+
+<h2>Flex布局</h2>
 <p>相关连接:</p>
 
 - http://www.w3cplus.com/css3/flexbox-layout-and-calculation.html
@@ -222,6 +225,15 @@
 - position为absolute或fixed
 - display为inline-block, table-cell, table-caption, flex, inline-flex
 - overflow不为visible
+
+<h2>CSS分层<sup>具体看ppt</sup></h2>
+
+- SMACSS
+- BEM
+- SUIT
+- ACSS
+- ITCSS
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/smacss.png" /></p>
 
 
 
