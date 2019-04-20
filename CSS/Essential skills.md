@@ -167,16 +167,16 @@
 <h2>Reset的选择</h2>
 
 - *的杀伤力太大!!!
-- Reset.css 重置 Normalize.css修复 Neat.css融合<sup>(当前目录下有)</sup>
+- Reset.css 重置 Normalize.css修复 <a href="http://thx.github.io/cube/doc/neat">Neat.css</a>融合<sup>(当前目录下有)</sup>
 - html{box-sizing: border-box;} *,*:before,X:after{box-sizing: inherit;}<sup>(移动端都要以怪异盒模型排版)</sup>
 
 <h2>ICON-FONT与常用字体排版</h2>
-纯css实现图标: <a href="http://cssicon.space/#/">CSS ICON</a>
+<a href="http://cssicon.space/#/">CSS ICON</a> | <a href="https://www.fontsquirrel.com/tools/webfont-generator">字体格式转换</a>
 
 - no-image时代 不超过纯色为2的图像
 - 宋体非宋体 黑体非黑体 WIndows下的宋体叫中易宋体SimSun，Mac是华文宋体STSong。WIndows下的黑体叫中易黑体SimHei，Mac是华文黑体STHeiti。
 - 不要只写中文字体名，保证西文字体在中文字体前面。Mac->Linux->Windows
-- 切忌不要直接使用设计师PSD的设计font-family,关键时刻再去启动font-face（typo.css 、 Entry.css 、Type.css ）
+- 切忌不要直接使用设计师PSD的设计font-family,关键时刻再去启动font-face<sup><a href="http://thx.github.io/cube/doc/neat">请看neat.css</a></sup>（typo.css 、 Entry.css 、Type.css ）
 - font-family: sans-serif;系统默认，字体多个单词组成加引号。
 
 <h3>有关设计的JS</h3>
