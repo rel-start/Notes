@@ -80,6 +80,7 @@ https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode
 
 <h3 id="forwards1">forwards1</h3>
 <img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/animation-fill-mode%7Bforwards1%7D.gif" />
+
 ```javascript
 ###forwards1
 <style>
