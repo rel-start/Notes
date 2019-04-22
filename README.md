@@ -21,6 +21,7 @@
 
 ### Java
 - [java简单配置](https://github.com/rel-start/Notes/blob/master/Java/Java%20config.md)
+- [数据类型](https://github.com/rel-start/Notes/blob/master/Java/Java%20data%20type.md)
 
 
 

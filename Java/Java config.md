@@ -57,10 +57,12 @@ public class HelloWorld {
 }
 ```
 
-<h2><a href="https://baike.baidu.com/item/java%E5%85%B3%E9%94%AE%E5%AD%97/5808816?fr=aladdin">java关键字</a></h2>
-
 <h2>java执行三步骤</h2>
 
 1. 建立源文件 `HelloWorld.java`
 2. 编译文件 `javac HelloWorld.java`, 编码之后会产生一个 `.class` 文件
 3. 运行文件 `java HelloWorld`
+
+
+
+
