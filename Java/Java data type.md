@@ -87,7 +87,7 @@
     <td>多个字符串(用双引号)</td>
     <td>String</td>
     <td></td>
-    <td>"发动机可三路"</td>
+    <td>例."发动机可三路"</td>
     <td></td>
   </tr>
   <tr>
@@ -104,7 +104,7 @@
 
 <h2>变量/常量</h2>
 
-```
+```java
 ## 变量
 byte a = 1;
 a = 333;
@@ -124,7 +124,7 @@ System.out.println(PI);
 
 <h3>强制类型装换</h3>
 
-```
+```java
 int a = 30;
 short b = 7;
 System.out.println("a/b="+(a/b));  // 结果int类型,自动类型转换
@@ -152,6 +152,13 @@ v = t+v;	// t=t+v;报错, 无法将double转换为int
 System.out.println(v);
 ```
 
+<h2>数据类型之间的转换</h2>
 
+    byte-->short(char)-->int--> long-->float-->double
 
+<p>自动转换（容量小-->容量大），强制转换（容量大-->容量小）。</p>
 
+<h3>注意</h3>
+
+- 在多种类型混合运算过程中，首先将所有数据转换成容量最大的那种，再进行计算。
+- byte/short/char之间的计算不会相互转换，首先转换成int类型再计算。
