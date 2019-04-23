@@ -93,11 +93,11 @@
   </tr>
   <tr>
     <td>translate(x, y)</td>
-    <td>定义2D转换（好像可以代替 top left） <span style="color: #999;">多个变换translate()最好写在最前面，transform-origin问题</span></td>
+    <td>定义2D转换（好像可以代替 top left） <mark>多个变换translate()最好写在最前面，transform-origin问题</mark></td>
   </tr>
   <tr>
     <td>translate3d(x, y, z)</td>
-    <td>定义3D转换。<span style="color: #999;">拆分（仅translateZ()感觉是屏幕到眼睛的这个轴）的是3D缩放</span></td>
+    <td>定义3D转换。<mark>拆分（仅translateZ()感觉是屏幕到眼睛的这个轴）的是3D缩放</mark></td>
   </tr>
   <tr>
     <td>scale(x[, y]?)</td>
@@ -110,7 +110,7 @@
   </tr>
   <tr>
     <td>scale3d(x, y, z)</td>
-    <td>定义3D缩放。<span style="color: #999;">拆分（仅scaleZ）是3D缩放。scale(2) = scale3d(1, 1, 2);</span></td>
+    <td>定义3D缩放。<mark>拆分（仅scaleZ）是3D缩放。scale(2) = scale3d(1, 1, 2);</mark></td>
   </tr>
   <tr>
     <td>rotate(angle)</td>
@@ -118,11 +118,11 @@
   </tr>
   <tr>
     <td>rotate3d(x, y, z, angle)</td>
-    <td>定义3D旋转。<span style="color: #999;">所有拆分（rotateX）的是3D旋转。rotateX(45deg) = rotate3d(1, 0, 0, 45deg)</span></td>
+    <td>定义3D旋转。<mark>所有拆分（rotateX）的是3D旋转。rotateX(45deg) = rotate3d(1, 0, 0, 45deg)</mark></td>
   </tr>
   <tr>
     <td>skew(x-angle, y-angle)</td>
-    <td>定义沿着X和Y轴的2D倾斜转换。<span style="color: #999;">拆分（skewX）的是2D倾斜</span></td>
+    <td>定义沿着X和Y轴的2D倾斜转换。<mark>拆分（skewX）的是2D倾斜</mark></td>
   </tr>
   <tr>
     <td>perspective(n)</td>
