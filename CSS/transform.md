@@ -93,7 +93,7 @@
   </tr>
   <tr>
     <td>translate(x, y)</td>
-    <td>定义2D转换（好像可以代替 top left） <mark>多个变换translate()最好写在最前面，transform-origin问题</mark></td>
+    <td>定义2D转换（好像可以代替 top left） <em>多个变换translate()最好写在最前面，transform-origin问题</em></td>
   </tr>
   <tr>
     <td>translate3d(x, y, z)</td>
