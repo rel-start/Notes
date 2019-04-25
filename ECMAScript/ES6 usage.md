@@ -54,9 +54,9 @@ alert`123`
 // 等同于
 alert(123)
 ```
-标签模板其实不是模板，而是函数调用的一种特殊形式。“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数。
+<p>标签模板其实不是模板，而是函数调用的一种特殊形式。“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数。</p>
 
-但是，如果模板字符里面有变量，就不是简单的调用了，而是会将模板字符串先处理成多个参数，再调用函数。
+<p>但是，如果模板字符里面有变量，就不是简单的调用了，而是会将模板字符串先处理成多个参数，再调用函数。</p>
 
 ```javascript
 let a = 5;
@@ -103,7 +103,7 @@ result.q(); // 企鹅
 
 <h2>对象的扩展</h2>
 <h3>super 关键字</h3>
-super: 指向当前对象的原型对象。
+<p>super: 指向当前对象的原型对象。</p>
 
 ```javascript
 const eat = {
@@ -172,9 +172,166 @@ console.log(sunday.getDrink());
 
 <h2>函数的扩展</h2>
 <h3>使用注意点</h3>
-箭头函数有几个使用注意点
+<p>箭头函数有几个使用注意点。</p>
 
 1. 函数体内的 `this` 对象,就是定义时所在的对象, 而不是使用时所在的对象.
 2. 不可以当作构造函数, 也就是说, 不可以使用 `new` 命令,否则会抛出一个错误.
 3. 不可以使用 `arguments` 对象, 该对象在函数体内不存在. 如果要用, 可以用 reset 参数代替.
 4. 不可以使用 `yield` 命令, 因此箭头函数不能用作 Generator 函数.
+
+<p>上面四点中，第一点尤其值得注意。this对象的指向是可变的，但是在箭头函数中，它是固定的。</p>
+
+```javascript
+function foo(){
+    setTimeout(() => {
+        console.log('id: ', this.id);
+    }, 100);
+}
+
+var id = 21;
+foo.call({ id: 40 });   // id: 40
+```
+<p>上面代码中，<code>setTimeout</code>的参数是一个箭头函数，这个箭头函数的定义生效是在<code>foo</code>函数生成时，而它的真正执行要等到 100 毫秒后。如果是普通函数，执行时<code>this</code>应该指向全局对象<code>window</code>，这时应该输出<code>21</code>。但是，箭头函数导致<code>this</code>总是指向函数定义生效时所在的对象（本例是<code>{id: 40}</code>），所以输出的是<code>40</code>。</p>
+<p>箭头函数可以让<code>setTimeout</code>里面的<code>this</code>，绑定定义时所在的作用域，而不是指向运行时所在的作用域。下面是另一个例子。</p>
+
+```javascript
+function Timer() {
+    this.s1 = 0;
+    this.s2 = 0;
+    setInterval(() => {
+        // console.log(this.s1);
+        this.s1++
+    }, 1000);
+
+    setInterval(function (){
+        // console.log(this.s2);
+        
+        this.s2++;
+    });
+}
+
+var timer = new Timer();
+setTimeout(() => console.log('s1: ', timer.s1), 3100);
+setTimeout(() => console.log('s2: ', timer.s2), 3100);
+// s1: 3
+// s2: 0
+```
+<p>上面代码中, <code>Timer</code>函数内部设置了两个定时器, 分别使用了箭头函数和普通函数. 前者的<code>this</code>绑定定义时所在的作用域(即<code>Timer</code>函数), 后者的<code>this</code>指向运行时所在的作用域（即全局对象）。所以，3100 毫秒之后，<code>timer.s1</code>被更新了 3 次，而<code>timer.s2</code>一次都没更新。</p>
+
+<p>箭头函数可以让<code>this</code>指向固定化，这种特性很有利于封装回调函数。下面是一个例子，DOM 事件的回调函数封装在一个对象里面。</p>
+
+```javascript
+const handler = {
+    id: '123456',
+
+    init: function() {
+        document.addEventListener('click', event => this.doSomething(event.type), false);
+    },
+
+    doSomething: function(type) {
+        console.log(`Handling ${type} for ${this.id}`); // Handling click for 123456
+    }
+};
+handler.init();
+```
+
+<p>上面代码的<code>init</code>方法中,使用了箭头函数,这导致这个箭头函数里面的<code>this</code>,总是指向<code>handler</code>对象. 否则回调函数运行时，<code>this.doSomething</code>这一行会报错，因为此时this指向document对象。</p>
+<p>所以，箭头函数转成 ES5 的代码如下。</p>
+
+```javascript
+// ES6
+function foo() {
+  setTimeout(() => {
+    console.log('id:', this.id);
+  }, 100);
+}
+
+// ES5
+function foo() {
+  var _this = this;
+
+  setTimeout(function () {
+    console.log('id:', _this.id);
+  }, 100);
+}
+```
+<p>上面代码中，转换后的 ES5 版本清楚地说明了，箭头函数里面根本没有自己的<code>this</code>，而是引用外层的</code>this<code>。</p>
+
+<p><code>this</code>指向的固定化，并不是因为箭头函数内部有绑定<code>this</code>的机制，实际原因是箭头函数根本没有自己的<code>this</code>，导致内部的this就是外层代码块的<code>this</code>。正是因为它没有<code>this</code>，所以也就不能用作构造函数。</p>
+
+```javascript
+function foo(){
+    return () => {
+        return () => {
+            return () => {
+                console.log('id: ', this.id);
+            };
+        };
+    };
+}
+
+var f = foo.call({id: 1});
+
+var t1 = f()()();   // id: 1
+var t2 = f.call({id: 2})()();   // id: 1
+var t3 = f().call({id: 3})();   // id: 1
+var t4 = f()().call({id: 4});   // id: 1
+```
+<p>上面代码之中，只有一个<code>this</code>，就是函数<code>foo</code>的<code>this</code>，所以<code>t1</code>、<code>t2</code>、<code>t3</code>都输出同样的结果。因为所有的内层函数都是箭头函数，都没有自己的<code>this</code>，它们的<code>this</code>其实都是最外层<code>foo</code>函数的<code>this</code>。</p>
+
+<p>除了<code>this</code>，以下三个变量在箭头函数之中也是不存在的，指向外层函数的对应变量：<code>arguments</code>、<code>super</code>、<code>new.target</code>。</p>
+
+```javascript
+function fn(){
+    setTimeout(() => {
+        console.log('args: ', arguments);   // args: [2,3,4,5]
+    }, 100);
+}
+ fn(2,3,4,5);
+```
+<p>上面代码中，箭头函数内部的变量<code>arguments</code>，其实是函数<code>foo</code>的<code>arguments</code>变量。</p>
+
+<p>另外，由于箭头函数没有自己的<code>this</code>，所以当然也就不能用<code>call()</code>、<code>apply()</code>、<code>bind()</code>这些方法去改变<code>this</code>的指向。</p>
+
+```javascript
+var result = (function fn(){
+    return [
+        (() => this.x).bind({ x: 'innner' })()
+    ]
+}).call({ x: 'outer' });
+
+console.log(result);    // ["outer"]
+```
+
+<p>上面代码中，箭头函数没有自己的<code>this</code>，所以<code>bind</code>方法无效，内部的<code>this</code>指向外部的<code>this</code>。</p>
+
+<h3>不适用场合</h3>
+<p>由于箭头函数使得<code>this</code>从“动态”变成“静态”，下面两个场合不应该使用箭头函数。</p>
+
+<p>第一个场合是定义对象的方法，且该方法内部包括<code>this</code>。</p>
+
+```javascript
+window.lives = 1;
+
+const cat = {
+    lives: 9,
+    jumps: () => {
+        this.lives--;
+        console.log(this.lives);    // 0
+    }
+};
+
+cat.jumps();
+
+```
+<p>上面代码中，<code>cat.jumps()</code>方法是一个箭头函数，这是错误的。调用<code>cat.jumps()</code>时，如果是普通函数，该方法内部的<code>this</code>指向<code>cat</code>；如果写成上面那样的箭头函数，使得<code>this</code>指向全局对象，因此不会得到预期结果。这是因为对象不构成单独的作用域，导致<code>jumps</code>箭头函数定义时的作用域就是全局作用域。</p>
+
+<p>第二个场合是需要动态<code>this</code>的时候，也不应使用箭头函数。</p>
+
+```javascript
+document.addEventListener('click', () => {
+    this.classList.toggle('on');    // this = Window
+});
+```
+<p>上面代码运行时，点击按钮会报错，因为<code>button</code>的监听函数是一个箭头函数，导致里面的<code>this</code>就是全局对象。如果改成普通函数，<code>this</code>就会动态指向被点击的按钮对象。</p>
+<strong>另外，如果函数体很复杂，有许多行，或者函数内部有大量的读写操作，不单纯是为了计算值，这时也不应该使用箭头函数，而是要使用普通函数，这样可以提高代码可读性。</strong>
