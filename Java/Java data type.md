@@ -327,11 +327,6 @@ https://blog.csdn.net/sunbocong/article/details/81032758
     <td>逻辑非,永安里翻转操作数的逻辑状态,如果条件为true,则逻辑非原酸付将得到false</td>
     <td>int a=0,b=1,c=2; !(a&lt;b)</td>
     <td>false</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
+  </tr><tr style="display:none;"><td>!</td></tr>
 </table>
 <p><code>&</code>, <code>|</code> 判断符两侧表达式都需要判断;</p>
