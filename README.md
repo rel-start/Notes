@@ -15,8 +15,8 @@
 - [transform](https://github.com/rel-start/Notes/blob/master/CSS/transform.md)
 - [css必备技能](https://github.com/rel-start/Notes/blob/master/CSS/Essential%20skills.md)
 
-### ECMAScript6
-- [ES6环境搭建](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20environment.md)
+### ECMAScript
+- [ES6环境搭建](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20Environment.md)
 - [ES6用法](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20usage.md)
 
 ### Linux
