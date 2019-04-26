@@ -162,3 +162,176 @@ System.out.println(v);
 
 - 在多种类型混合运算过程中，首先将所有数据转换成容量最大的那种，再进行计算。
 - byte/short/char之间的计算不会相互转换，首先转换成int类型再计算。
+
+<h2>运算符</h2>
+`\t` = 相当于`tab`
+
+<h3>算术运算符</h3>
+<table>
+    <tr>
+        <th>运算符</th>
+        <th>描述</th>
+        <th>例子</th>
+    </tr>
+    <tr>
+        <td>+</td>
+        <td>加</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>减</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>*</td>
+        <td>乘</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>除</td>
+        <td>24/6=4</td>
+      </tr>
+      <tr>
+        <td>%</td>
+        <td>求余</td>
+        <td>24%7=3</td>
+      </tr>
+      <tr>
+        <td>++</td>
+        <td>自增</td>
+        <td>int i=5; i++;</td>
+      </tr>
+      <tr>
+        <td>--</td>
+        <td>自减</td>
+        <td>int j=6; --j;</td>
+      </tr>
+</table>
+
+<table>
+  <caption>比较运算符</caption>
+  <thead><tr>
+    <th>运算符</th>
+    <th>描述</th>
+    <th>例子</th>
+    <th>结果</th>
+  </tr>
+  <tr>
+    <td>></td>
+    <td>大于</td>
+    <td>a=5;b=2;a>b</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>&lt;</td>
+    <td>小于</td>
+    <td>a=5;b=2;a<b</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>>=</td>
+    <td>大于等于</td>
+    <td>a=5;a>=3</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td><=</td>
+    <td>小于等于</td>
+    <td>a=5;b=2;b<=a</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>==</td>
+    <td>等于</td>
+    <td>a=5;b=2;b==a</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>!=</td>
+    <td>不等于</td>
+    <td>b=2;b!=2</td>
+    <td>false</td>
+  </tr>
+</table>
+
+<h3>比较运算符</h3>
+<table>
+  <tr>
+    <th>运算符</th>
+    <th>描述</th>
+    <th>例子</th>
+  </tr>
+  <tr>
+    <td>=</td>
+    <td>赋值</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>+=</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>-=</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>*=</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>/=</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>%=</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+https://blog.csdn.net/sunbocong/article/details/81032758
+
+<h3>比较运算符</h3>
+<table>
+  <tr>
+    <th>运算符</th>
+    <th>描述</th>
+    <th>例子</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>&amp;&amp;</td>
+    <td>逻辑与.当且仅当两个操作数都为真,条件才为真</td>
+    <td>
+        <ul>
+            <li>int a=0,b=1,c=2; a&lt;b &amp;&amp; b&lt;c</li>
+            <li>&&前后必须是表达式; <code>a&&b报错</code> <code>(0&lt;1)&&(1&lt;2)通过</code></li>
+        </ul>
+    </td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>||</td>
+    <td>逻辑或.如果任何两个操作数任何一个为真,条件为真</td>
+    <td>int a=0,b=1,c=2; a&lt;b || b&gt;c</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>!</td>
+    <td>逻辑非,永安里翻转操作数的逻辑状态,如果条件为true,则逻辑非原酸付将得到false</td>
+    <td>int a=0,b=1,c=2; !(a&lt;b)</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<p><code>&</code>, <code>|</code> 判断符两侧表达式都需要判断;</p>
