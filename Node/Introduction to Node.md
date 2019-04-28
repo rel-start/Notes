@@ -18,7 +18,7 @@ $ node -v
 
 <h2>Node环境</h2>
 
-```
+```node
 # 进入REPL环境, 该环境下可以使用js语法
 $ node
 # 退出当前终端
@@ -49,7 +49,7 @@ $ .load filename
 
 <h3>node相关命令</h3>
 
-```
+```javascript
 $ node ./index.js
 # node调试. chrome调试页面(chrome://inspect/)
 $ node --inspect-brk index.js
