@@ -12,13 +12,13 @@
 <h2>Node基本操作命令</h2>
 <p>查看node版本</p>
 
-```
+```java
 $ node -v
 ``` 
 
 <h2>Node环境</h2>
 
-```node
+```java
 # 进入REPL环境, 该环境下可以使用js语法
 $ node
 # 退出当前终端
@@ -49,7 +49,7 @@ $ .load filename
 
 <h3>node相关命令</h3>
 
-```javascript
+```java
 $ node ./index.js
 # node调试. chrome调试页面(chrome://inspect/)
 $ node --inspect-brk index.js
@@ -64,7 +64,7 @@ $ node --inspect-brk index.js
 
 <p>更新 npm</p>
 
-```
+```java
 # 查看npm版本
 $ npm -v
 # 最新版本npm
@@ -75,7 +75,7 @@ npm install npm@next -g
 
 <h3>npm常用包以及<a href="https://www.cnblogs.com/itlkNote/p/6830682.html">一些命令</a></h3>
 
-```
+```java
 # 安装境内的cnpm包
 $ npm install cnpm -g
 
