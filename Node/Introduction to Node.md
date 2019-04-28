@@ -10,6 +10,7 @@
 - 中文官网: http://nodejs.cn/
 
 <h3>Node基本操作命令</h3>
+
 ```javascript
 // 查看node版本
 $ node -v
