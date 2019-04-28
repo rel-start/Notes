@@ -17,36 +17,36 @@ $ node -v
 ``` 
 
 <h2>Node环境</h2>
-进入REPL环境, 该环境下可以使用js语法
-```
+```javascript
+// 进入REPL环境, 该环境下可以使用js语法
 $ node
-```
-退出当前终端
-```
+
+// 退出当前终端
 ctrl + c
-```
-```java
-# 进入REPL环境, 该环境下可以使用js语法
-$ node
-# 退出当前终端
-ctrl + c
-# 退出 Node REPL
+
+// 退出 Node REPL
 ctrl + c 按下两次
-# 退出 Node REPL
 ctrl + d
-# 查看输入的历史命令
+
+// 查看输入的历史命令
 向上/向下
-# 列出当前命令
+
+// 列出当前命令
 tab键
-# 列出使用命令
+
+// 列出使用命令
 $ .help
-# 退出多行表达式
+
+// 退出多行表达式
 $ .break
-# 退出多行表达式
+
+// 退出多行表达式
 $ .clear
-# 保存当前的 Node REPL 会话到指定文件
+
+// 保存当前的 Node REPL 会话到指定文件
 $ .save filename
-# 载入当前 Node REPL 会话的文件内容
+
+// 载入当前 Node REPL 会话的文件内容
 $ .load filename
 ```
 <p>node环境下按<code>tab</code>可以显示代码提示</p>
@@ -56,9 +56,10 @@ $ .load filename
 
 <h3>node相关命令</h3>
 
-```java
+```javascript
 $ node ./index.js
-# node调试. chrome调试页面(chrome://inspect/)
+
+// node调试. chrome调试页面(chrome://inspect/)
 $ node --inspect-brk index.js
 ```
 
@@ -72,36 +73,46 @@ $ node --inspect-brk index.js
 <p>更新 npm</p>
 
 ```java
-# 查看npm版本
+// 查看npm版本
 $ npm -v
-# 最新版本npm
+
+// 最新版本npm
 $ npm install npm@latest -g
-# 要安装将来发布的版本，请运行：
+
+// 要安装将来发布的版本，请运行：
 npm install npm@next -g
 ```
 
 <h3>npm常用包以及<a href="https://www.cnblogs.com/itlkNote/p/6830682.html">一些命令</a></h3>
 
 ```java
-# 安装境内的cnpm包
+// 安装境内的cnpm包
 $ npm install cnpm -g
 
-# 清除缓存
+// 清除缓存
 $ npm cache clean --force
-# 列出安装的软件包
+
+// 列出安装的软件包
 $ npm ls
-# 初始化npm, 会生成一个package.json
+
+// 初始化npm, 会生成一个package.json
 $ npm init
 
-# 全局安装nrm
+// -------------------------------------
+
+// 全局安装nrm
 $ npm install nrm -g
-# 卸载全局nrm
+
+// 卸载全局nrm
 $ npm uninstall -g nrm
-# 查看可用镜像源
+
+// 查看可用镜像源
 $ nrm ls
-# 将镜像源切换成淘宝
+
+// 将镜像源切换成淘宝
 $ nrm use taobao
-# 查看所有npm包
+
+// 查看所有npm包
 $ nrm use npm
 ```
 
