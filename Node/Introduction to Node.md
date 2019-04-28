@@ -17,6 +17,7 @@ $ node -v
 ``` 
 
 <h2>Node环境</h2>
+
 ```javascript
 // 进入REPL环境, 该环境下可以使用js语法
 $ node
@@ -72,7 +73,7 @@ $ node --inspect-brk index.js
 
 <p>更新 npm</p>
 
-```java
+```javascript
 // 查看npm版本
 $ npm -v
 
@@ -85,7 +86,7 @@ npm install npm@next -g
 
 <h3>npm常用包以及<a href="https://www.cnblogs.com/itlkNote/p/6830682.html">一些命令</a></h3>
 
-```java
+```javascript
 // 安装境内的cnpm包
 $ npm install cnpm -g
 
