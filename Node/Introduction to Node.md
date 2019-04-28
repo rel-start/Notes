@@ -9,14 +9,19 @@
 - 官网: https://nodejs.org/en/
 - 中文官网: http://nodejs.cn/
 
-<h2>Node基本操作命令</h2>
-<p>查看node版本</p>
-
-```java
+<h3>Node基本操作命令</h3>
+```javascript
+// 查看node版本
 $ node -v
+
+// 运行文件
+$ node ./index.js
+
+// node调试. chrome调试页面(chrome://inspect/)
+$ node --inspect-brk index.js
 ``` 
 
-<h2>Node环境</h2>
+<h3>Node环境</h3>
 
 ```javascript
 // 进入REPL环境, 该环境下可以使用js语法
@@ -50,18 +55,61 @@ $ .save filename
 // 载入当前 Node REPL 会话的文件内容
 $ .load filename
 ```
-<p>node环境下按<code>tab</code>可以显示代码提示</p>
-
 <p>node环境下可进行运算等(与<code>IDE</code>环境比较类似)</p>
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-hj.png" /></p>
 
-<h3>node相关命令</h3>
+<h3>node回调</h3>
+<h4>什么是回调<h4>
+
+> 函数调用方式分为三类: 同步调用、回调和异步调用
+> 回调是一种双向调用模式
+> 可以通过回调函数来实现回调
+
+<h4>阻塞与非阻塞</h4>
+
+> 阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态
+> 阻塞就是做不完不准回来（等待函数返回一个值），我等着
+> 非阻塞就是你先做，我现在看看有其他事没有，完了告诉我一声（函数被调用马上返回，函数内部还在继续工作，被调用函数做完在通知我）
+
+<p>以下是一个简单阻塞代码，前提是有<code>data.txt</code>其内容为 <code>aaa</code></p>
 
 ```javascript
-$ node ./index.js
+// 阻塞代码
+var fs = require('fs');
+var data = fs.readFileSync('data.txt');
+console.log(data);
+console.log('读取成功');
+```
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-zs01.png" /></p>
+<p>以下是个非阻塞代码展示</p>
 
-// node调试. chrome调试页面(chrome://inspect/)
-$ node --inspect-brk index.js
+```javascript
+// 非阻塞代码
+var fs = require('fs');
+fs.readFile('data.txt', function(err, data) {
+	if (err) return console.error(err);
+	console.log(data.toString());
+});
+console.log('读取成功');
+```
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-fzs01.png" /></p>
+
+<h3>事件驱动模型<sup>事件驱动IO | 非阻塞IO</sup></h3>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-sjqdmx.png" /></p>
+
+```javascript
+// 引入Event模块并创建eventsEmitter对象
+const events = require('events');
+const eventEmitter = new events.EventEmitter();
+
+// 绑定事件函数
+const conncHander = function conncted() {
+    console.log('conncted被调用了');
+}
+eventEmitter.on('connection', conncHander); // 完成事件绑定
+
+// 触发事件
+eventEmitter.emit('connection');
 ```
 
 <hr />
@@ -99,6 +147,12 @@ $ npm ls
 // 初始化npm, 会生成一个package.json
 $ npm init
 
+// npm子命令
+$ npm help
+
+// npm install命令使用手册
+$ npm help install
+
 // -------------------------------------
 
 // 全局安装nrm
@@ -113,8 +167,8 @@ $ nrm ls
 // 将镜像源切换成淘宝
 $ nrm use taobao
 
-// 查看所有npm包
-$ nrm use npm
+// 查看所有npm jquery包
+$ npm search jquery
 ```
 
 <h3>第一个最基本的web服务<code>server.js</code></h3>
