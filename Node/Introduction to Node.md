@@ -62,15 +62,15 @@ $ .load filename
 <h3>node回调</h3>
 <h4>什么是回调<h4>
 
-> 函数调用方式分为三类: 同步调用、回调和异步调用
-> 回调是一种双向调用模式
-> 可以通过回调函数来实现回调
+- 函数调用方式分为三类: 同步调用、回调和异步调用
+- 回调是一种双向调用模式
+- 可以通过回调函数来实现回调
 
 <h4>阻塞与非阻塞</h4>
 
-> 阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态
-> 阻塞就是做不完不准回来（等待函数返回一个值），我等着
-> 非阻塞就是你先做，我现在看看有其他事没有，完了告诉我一声（函数被调用马上返回，函数内部还在继续工作，被调用函数做完在通知我）
+- 阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态
+- 阻塞就是做不完不准回来（等待函数返回一个值），我等着
+- 非阻塞就是你先做，我现在看看有其他事没有，完了告诉我一声（函数被调用马上返回，函数内部还在继续工作，被调用函数做完在通知我）
 
 <p>以下是一个简单阻塞代码，前提是有<code>data.txt</code>其内容为 <code>aaa</code></p>
 
@@ -114,26 +114,26 @@ eventEmitter.emit('connection');
 ```
 <h3>模块化的概念与意义</h3>
 
-> 为了让Node.js的文件可以相互调用，Node.js提供了一个简单的模块系统
-> 模块是Node.js应用程序的基本组成部分
-> 文件和模块是一一对应的。一个Node.js文件就是一个模块
-> 这个文件可能是JavaScript代码、JSON或者编译过的C/C++扩展
-> Node.js中存在4类模块（原生模块和3种文件模块）
+- 为了让Node.js的文件可以相互调用，Node.js提供了一个简单的模块系统
+- 模块是Node.js应用程序的基本组成部分
+- 文件和模块是一一对应的。一个Node.js文件就是一个模块
+- 这个文件可能是JavaScript代码、JSON或者编译过的C/C++扩展
+- Node.js中存在4类模块（原生模块和3种文件模块）
 
 <h4>Node.js的模块加载流程</h4>
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-mkjzlc.png" /></p>
 
-> 从文件模块缓存中加载
-> 从原生模块加载
-> 从文件加载
+- 从文件模块缓存中加载
+- 从原生模块加载
+- 从文件加载
 
 <p>require方法加载模块</p>
 
-> require方法接受一下集中参数的传递：
-> http、fs、path等，原生模块
-> ./mod或../mod，相对路径的文件模块
-> /pathtomodule/mod，绝对路径的文件模块
-> mod，非原生模块的文件模块
+- require方法接受一下集中参数的传递：
+- http、fs、path等，原生模块
+- ./mod或../mod，相对路径的文件模块
+- /pathtomodule/mod，绝对路径的文件模块
+- mod，非原生模块的文件模块
 
 <p>以下是自定义文件模块的一个小案例，简单说明了如何导出模块(<code>hello.js</code>文件)、以及加载模块(<code>main.js</code>文件)</p>
 
@@ -165,7 +165,7 @@ module.exports = Hello;
 ```
 <h4><a href="https://www.runoob.com/nodejs/nodejs-router.html">Node路由</a></h4>
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-lu.png" /></p>
-<p>下面是一个路由的小案例，分别是<code>index.js</code> <code>server.js</code> <code>router.js</code></p>
+<p>下面是一个路由的小案例，<a href="https://www.runoob.com/nodejs/node-js-get-post.html">Node.js GET POST请求</a></p>
 
 <i class="icon-file"></i> index.js
 ```javascript
