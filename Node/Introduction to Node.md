@@ -3,6 +3,7 @@
 标签（空格分隔）： Notes
 
 ---
+[TOC]
 
 相关连接:
 
@@ -60,7 +61,7 @@ $ .load filename
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-hj.png" /></p>
 
 <h3>node回调</h3>
-<h4>什么是回调<h4>
+<h4>什么是回调</h4>
 
 - 函数调用方式分为三类: 同步调用、回调和异步调用
 - 回调是一种双向调用模式
@@ -164,7 +165,7 @@ function Hello(){
 module.exports = Hello;
 ```
 <h4><a href="https://www.runoob.com/nodejs/nodejs-router.html">Node路由</a></h4>
-<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-lu.png" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-lu.png"/></p>
 <p>下面是一个路由的小案例，<a href="https://www.runoob.com/nodejs/node-js-get-post.html">Node.js GET POST请求</a></p>
 
 <i class="icon-file"></i> index.js
@@ -210,6 +211,10 @@ function route(pathname, response) {
 
 exports.route = route;
 ```
+<h4><a href="https://www.runoob.com/nodejs/nodejs-global-object.html">Node.js 全局对象</a></h4>
+
+<h4><a href="https://www.runoob.com/nodejs/nodejs-restful-api.html">Node.js RESTful API</a></h4>
+
 
 <hr />
 <h2>包管理器npm</h2>
