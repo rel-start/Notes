@@ -12,20 +12,20 @@
 
 ```
 <style>
-    * { margin: 0; box-sizing: border-box; }
-    .container { overflow: hidden; }
-    .item { text-align: center; min-width: 200px; padding-bottom: 9999px; margin-bottom: -9999px; border: 3px dotted#fff; }
-    .left { float: left; margin-left: -100%;  background: royalblue; }
-    .right { float: left; margin-left: -200px; background: saddlebrown; }
-    .middle { float: left; width: 100%; padding-left: 200px; padding-right: 200px; background: seagreen; }
-</style>
+  * { margin: 0; box-sizing: border-box; }
+  .container { overflow: hidden; }
+  .item { text-align: center; min-width: 200px; padding-bottom: 9999px; margin-bottom: -9999px; border: 3px dotted#fff; }
+  .left { float: left; margin-left: -100%;  background: royalblue; }
+  .right { float: left; margin-left: -200px; background: saddlebrown; }
+  .middle { float: left; width: 100%; padding-left: 200px; padding-right: 200px; background: seagreen; 
+</style>}
 <div class="container">
-    <div class="middle item">
-        middle
-        <p>段落</p>
-    </div>
-    <div class="left item">left</div>
-    <div class="right item">right</div>
+  <div class="middle item">
+    middle
+    <p>段落</p>
+  </div>
+  <div class="left item">left</div>
+  <div class="right item">right</div>
 </div>
 这是后面的内容
 ```
@@ -34,20 +34,20 @@
 
 ```
 <style>
-    * { margin: 0; box-sizing: border-box; }
-    .container { display: flex; }
-    .item { border: 1px dashed; }
-    .middle { flex-grow: 1; order: 2; }
-    .left { order: 1; }
-    .right { order: 3; }
+  * { margin: 0; box-sizing: border-box; }
+  .container { display: flex; }
+  .item { border: 1px dashed; }
+  .middle { flex-grow: 1; order: 2; }
+  .left { order: 1; }
+  .right { order: 3; }
 </style>
 <div class="container">
-    <div class="middle item">
-        middle
-        <p>段落</p>
-    </div>
-    <div class="left item">left</div>
-    <div class="right item">right</div>
+  <div class="middle item">
+    middle
+    <p>段落</p>
+  </div>
+  <div class="left item">left</div>
+  <div class="right item">right</div>
 </div>
 这是后面的内容
 ```
@@ -58,28 +58,28 @@
 ```
 ##box1
 <style>
-    .box1 { width: 500px; height: 300px; border: 1px solid;  text-align: center; }
-    .box1 em { height: 100%; display: inline-block; vertical-align: middle; }
-    .box1 span { display: inline-block; vertical-align: middle; }
+  .box1 { width: 500px; height: 300px; border: 1px solid;  text-align: center; }
+  .box1 em { height: 100%; display: inline-block; vertical-align: middle; }
+  .box1 span { display: inline-block; vertical-align: middle; }
 </style>
 <div class="box1"><em></em><span>很有艺术气息的休闲鞋<br>不免额材质舒适透气</span></div>
 
 ##box2
 <style>
-    .box2 { display: table-cell; width: 500px; height: 300px; border: 1px solid; vertical-align: middle; text-align: center; }
+  .box2 { display: table-cell; width: 500px; height: 300px; border: 1px solid; vertical-align: middle; text-align: center; }
 </style>
 <div class="box2">
-    <p>很有艺术气息的休闲鞋</p>
-    <p>布面的材质舒适透气</p>
+  <p>很有艺术气息的休闲鞋</p>
+  <p>布面的材质舒适透气</p>
 </div>
 
 ##box3
 <style>
-    .box3 { width: 500px; height: 300px; border: 1px solid; line-height: 300px; text-align: center; }
-    .box3 span { display: inline-block; line-height: 20px; vertical-align: middle; }
+  .box3 { width: 500px; height: 300px; border: 1px solid; line-height: 300px; text-align: center; }
+  .box3 span { display: inline-block; line-height: 20px; vertical-align: middle; }
 </style>
 <div class="box3">
-    <span>很有艺术气息的休闲鞋<br>布面的材质舒适透气</span>
+  <span>很有艺术气息的休闲鞋<br>布面的材质舒适透气</span>
 </div>
 ```
 
@@ -88,9 +88,9 @@
 
 ```
 <style>
-    .left { float: left; width: 100px; background-color: pink; }
-    .right { float: right; width: 200px; background-color: burlywood; }
-    .middle { display: table-cell; width: 2000px; background-color: coral; }
+  .left { float: left; width: 100px; background-color: pink; }
+  .right { float: right; width: 200px; background-color: burlywood; }
+  .middle { display: table-cell; width: 2000px; background-color: coral; }
 </style>
 <div class="right">right</div>
 <div class="left">left</div>
@@ -117,54 +117,54 @@
 <h3>容器属性:</h3>
 
 - `flex-direction`: row | row-reverse | column | column-reverse;
-    - row(默认值)：主轴为水平方向，起点在左端。
-    - row-reverse：主轴为追评方向，起点在右端。
-    - column：主轴为垂直方向，起点在上沿。
-    - column-reverse：主轴为垂直方向，起点在下沿。
+  - row(默认值)：主轴为水平方向，起点在左端。
+  - row-reverse：主轴为追评方向，起点在右端。
+  - column：主轴为垂直方向，起点在上沿。
+  - column-reverse：主轴为垂直方向，起点在下沿。
 - `flex-wrap`: nowrap | wrap | wrap-reverse;
-    - nowrap(默认值)：不换行。
-    - wrap：换行，第一行在上方。
-    - wrap-reverse：换行，第一行在下方。
+  - nowrap(默认值)：不换行。
+  - wrap：换行，第一行在上方。
+  - wrap-reverse：换行，第一行在下方。
 - `flex-flow`: <flex-direction> || <flex-wrap>;
-    - 属性是 flext-direction 属性和 flex-wrap 属性的简写形式，默认值为 row nowrap
+  - 属性是 flext-direction 属性和 flex-wrap 属性的简写形式，默认值为 row nowrap
 - `justify-content`: flex-start | flex-end | center | space-between | space-around | space-evenly;
-    - flex-start(默认值)：起始位置对齐
-    - flex-end：结束位置对齐
-    - center：居中
-    - space-between：两端对齐，项目之间的间隔都相等
-    - space-around：每个项目两侧的间隔相等。然而，项目之间的间隔比项目两端的间隔大一倍
-    - space-evenly：项目两侧的间隔相等。
+  - flex-start(默认值)：起始位置对齐
+  - flex-end：结束位置对齐
+  - center：居中
+  - space-between：两端对齐，项目之间的间隔都相等
+  - space-around：每个项目两侧的间隔相等。然而，项目之间的间隔比项目两端的间隔大一倍
+  - space-evenly：项目两侧的间隔相等。
 - `align-items`: flex-start | flex-end | center | baseline | stretch;
-    - flex-start：交叉轴的起点对齐。(设置了高度会默认以这个对齐)
-    - flex-end：交叉轴的终点对齐。
-    - center：交叉轴的中点对齐。
-    - baseline：项目的第一行文字的基线对齐。
-    - stretch(默认值)：如果项目为设置高度或设为auto，将占满整个容器的高度。
+  - flex-start：交叉轴的起点对齐。(设置了高度会默认以这个对齐)
+  - flex-end：交叉轴的终点对齐。
+  - center：交叉轴的中点对齐。
+  - baseline：项目的第一行文字的基线对齐。
+  - stretch(默认值)：如果项目为设置高度或设为auto，将占满整个容器的高度。
 - `align-content`: flex-start | flex-end | center | space-between | space-aroundd | space-evenly | stretch;
-    - flex-start：与交叉轴的起点对齐。
-    - flex-end：与交叉轴的终点对齐。
-    - center：与交叉轴的中点对齐。
-    - space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
-    - space-around：每根轴线两侧的间隔都相等。然而，轴线之间的间隔比轴线两侧间隔大一倍。
-    - space-evenly：轴线两侧间隔都相等。
-    - stretch(默认值)：轴线占满整个交叉轴。
+  - flex-start：与交叉轴的起点对齐。
+  - flex-end：与交叉轴的终点对齐。
+  - center：与交叉轴的中点对齐。
+  - space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+  - space-around：每根轴线两侧的间隔都相等。然而，轴线之间的间隔比轴线两侧间隔大一倍。
+  - space-evenly：轴线两侧间隔都相等。
+  - stretch(默认值)：轴线占满整个交叉轴。
 
 <h3>容器属性:</h3>
 
 - `order`: 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
 - `flex-grow`
-    - 属性定义项目的放大比例，（默认为0），即如果存在剩余空间，也不放大。 
-    - 如果所有项目的 `flex-grow` 属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的 `flex-grow` 属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+  - 属性定义项目的放大比例，（默认为0），即如果存在剩余空间，也不放大。 
+  - 如果所有项目的 `flex-grow` 属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的 `flex-grow` 属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
 - `flex-shrink`
-    - 属性定义了项目的缩小比例，（默认为1），即如果空间不足，该项目将缩小。
-    - 当空间不足时，都将等比例缩小。如果一个项目的 `flex-shrink` 属性为0，其他项目都为1，则空间不足时，前者不缩小
+  - 属性定义了项目的缩小比例，（默认为1），即如果空间不足，该项目将缩小。
+  - 当空间不足时，都将等比例缩小。如果一个项目的 `flex-shrink` 属性为0，其他项目都为1，则空间不足时，前者不缩小
 - `flex-basis`: number | auto(默认) | initial | inherit;
-    - flex-basis: 非auto; 的优先级比 width[height]高。比 min-width[height] 或者 max-width[height] 低
+  - flex-basis: 非auto; 的优先级比 width[height]高。比 min-width[height] 或者 max-width[height] 低
 - `flex`: none | [ <flex-grow> <flex-shrink>? || <flex-basis> ]。 默认值为 0 1 auto。后两个属性可选
-    - 该属性有两个快捷值：auto（1 1 auto）和 none（0 0 auto）
-    - flex: 1;		相当于 1 1 0%;
-    - flex: auto;		相当于 1 1 auto; 好像跟上面一样
-    - flex: none;		相当于 0 0 auto; 清除吧
+  - 该属性有两个快捷值：auto（1 1 auto）和 none（0 0 auto）
+  - flex: 1;		相当于 1 1 0%;
+  - flex: auto;		相当于 1 1 auto; 好像跟上面一样
+  - flex: none;		相当于 0 0 auto; 清除吧
 - `align-self`: auto | flex-start | flex-end | center | baseline | stretch
 
 <h2>Reset的选择</h2>

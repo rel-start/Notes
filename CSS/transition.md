@@ -47,8 +47,8 @@
 
 ```
 <style>
-    .box {  width: 100px; height: 100px; background-color: #f60; transition: width 1s .5s, height 1s 1s; }
-    .box:hover { width: 300px; height: 300px; }
+  .box {  width: 100px; height: 100px; background-color: #f60; transition: width 1s .5s, height 1s 1s; }
+  .box:hover { width: 300px; height: 300px; }
 </style>
 <div class="box"></div>
 ```

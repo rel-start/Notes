@@ -25,10 +25,10 @@ console.log(first,second,three);
 
 # 对象的解构
 function fn(){
-    return {
-        a: "Hello",
-        b: 2
-    }
+  return {
+    a: "Hello",
+    b: 2
+  }
 }
 
 const result = fn();
@@ -76,8 +76,8 @@ const c = test `foor ${s} ${e} bar`;
 console.log(c);
 
 function test(strs, ...values) {
-    console.log(strs);  // ["foor ", " ", " bar", raw: Array(3)]
-    console.log(values);    //  ["hello", "world"]
+  console.log(strs);  // ["foor ", " ", " bar", raw: Array(3)]
+  console.log(values);    //  ["hello", "world"]
 }
 ```
 
@@ -89,13 +89,12 @@ const s = 'abcd';
 const test = [1,2,3,...s];
 const k = 'arr';
 const result = {
-    [k+1]: 1,
-    s,
-    test,
-    q() {
-        console.log('企鹅');
-        
-    }
+  [k+1]: 1,
+  s,
+  test,
+  q() {
+    console.log('企鹅');
+  }
 }
 console.log(result);    // {arr1:1, s:'abcd', test:[1,2,3,'a','b','c','d'], q:fn}
 result.q(); // 企鹅
@@ -107,22 +106,22 @@ result.q(); // 企鹅
 
 ```javascript
 const eat = {
-    getEat(){
-        return '栗子';
-    }
+  getEat(){
+    return '栗子';
+  }
 }
 
 const drink = {
-    getDrink(){
-        return '啤酒';
-    }
+  getDrink(){
+    return '啤酒';
+  }
 }
 
 let sunday = {
-    __proto__:eat,
-    getDrink(){
-        return super.getEat() + 'aa'
-    }
+  __proto__:eat,
+  getDrink(){
+    return super.getEat() + 'aa'
+  }
 }
 // sunday.__proto__ = eat;
 console.log(sunday.getEat());   // '栗子'
@@ -142,15 +141,15 @@ console.log(Object.is(NaN,NaN)); // true
 
 ```javascript
 const eat = {
-    getEat(){
-        return '栗子';
-    }
+  getEat(){
+    return '栗子';
+  }
 }
 
 const drink = {
-    getDrink(){
-        return '啤酒';
-    }
+  getDrink(){
+    return '啤酒';
+  }
 }
 
 let sunday = Object.create(eat);
@@ -180,8 +179,8 @@ console.log(sunday.getDrink());
 
 ```javascript
 function log(x, y){
-    y = y || 'World';
-    console.log(x,y);
+  y = y || 'World';
+  console.log(x,y);
 }
 
 log('Hello');       //'Hello World'
@@ -199,7 +198,7 @@ if (typeof y === 'undefined') y = 'World';
 
 ```javascript
 function log(x, y = 'World'){
-    console.log(x, y);
+  console.log(x, y);
 }
 
 log('Hello');       //'Hello World'
@@ -210,8 +209,8 @@ log('Hello', '');   // 'Hello '
 
 ```javascript
 function Point(x=0, y=0){
-    this.x = x;
-    this.y = y;
+  this.x = x;
+  this.y = y;
 }
 
 const p = new Point();
@@ -223,8 +222,8 @@ console.log(p);     // Point {x: 0, y: 0}
 
 ```javascript
 function fn(x = 5){
-    let x = 1;  // 标识符 'x' 已声明
-    const x = 2;  // 标识符 'x' 已声明
+  let x = 1;  // 标识符 'x' 已声明
+  const x = 2;  // 标识符 'x' 已声明
 }
 ```
 <p>上面代码中，参数变量x是默认声明的，在函数体中，不能用let或const再次声明，否则会报错。</p>
@@ -249,7 +248,7 @@ foo() // 101
 
 ```javascript
 function foo({x, y = 5}){
-    console.log(x, y);
+  console.log(x, y);
 }
 
 foo({});    // undefined 5
@@ -272,7 +271,7 @@ foo() // undefined 5
 
 ```javascript
 function fetch(url, { body = '', method = 'GET', headers = {} }) {
-    console.log(method);
+  console.log(method);
 }
 
 fetch('http://example.com', {});    // GET
@@ -294,11 +293,11 @@ fetch('http://example.com');    // GET
 
 ```javascript
 function m1({ x = 0, y = 0 } = {}) {
-    return [x, y];
+  return [x, y];
 }
 
 function m2({ x, y } = { x: 0, y: 0 }) {
-    return [x, y];
+  return [x, y];
 }
 
 // 函数没有参数的情况
@@ -328,7 +327,7 @@ m2({z: 3}) // [undefined, undefined]
 ```javascript
 // 例一
 function fn(x = 1, y) {
-    return [x, y];
+  return [x, y];
 }
 
 fn(); // [1, undefined]
@@ -338,7 +337,7 @@ fn(undefined, 1);  // [1, 1]
 
 // 例二
 function fn(x, y = 5, z) {
-    return [x, y, z];
+  return [x, y, z];
 }
 
 fn();  // [undefined, 5, undefined]
@@ -352,7 +351,7 @@ fn(1, 5, 2);   // [1, 5, 2]
 
 ```javascript
 function fn(x = 5, y = 6) {
-    console.log(x, y);
+  console.log(x, y);
 }
 fn(undefined, null);    // 5 null
 ```
@@ -481,9 +480,9 @@ foo.bind({}).name // "bound foo"
 
 ```javascript
 function foo(){
-    setTimeout(() => {
-        console.log('id: ', this.id);
-    }, 100);
+  setTimeout(() => {
+    console.log('id: ', this.id);
+  }, 100);
 }
 
 var id = 21;
@@ -494,18 +493,18 @@ foo.call({ id: 40 });   // id: 40
 
 ```javascript
 function Timer() {
-    this.s1 = 0;
-    this.s2 = 0;
-    setInterval(() => {
-        // console.log(this.s1);
-        this.s1++
-    }, 1000);
+  this.s1 = 0;
+  this.s2 = 0;
+  setInterval(() => {
+    // console.log(this.s1);
+    this.s1++
+  }, 1000);
 
-    setInterval(function (){
-        // console.log(this.s2);
+  setInterval(function (){
+    // console.log(this.s2);
         
-        this.s2++;
-    });
+    this.s2++;
+  });
 }
 
 var timer = new Timer();
@@ -520,15 +519,15 @@ setTimeout(() => console.log('s2: ', timer.s2), 3100);
 
 ```javascript
 const handler = {
-    id: '123456',
+  id: '123456',
 
-    init: function() {
-        document.addEventListener('click', event => this.doSomething(event.type), false);
-    },
+  init: function() {
+    document.addEventListener('click', event => this.doSomething(event.type), false);
+  },
 
-    doSomething: function(type) {
-        console.log(`Handling ${type} for ${this.id}`); // Handling click for 123456
-    }
+  doSomething: function(type) {
+    console.log(`Handling ${type} for ${this.id}`); // Handling click for 123456
+  }
 };
 handler.init();
 ```
@@ -558,13 +557,13 @@ function foo() {
 
 ```javascript
 function foo(){
+  return () => {
     return () => {
-        return () => {
-            return () => {
-                console.log('id: ', this.id);
-            };
-        };
+      return () => {
+        console.log('id: ', this.id);
+      };
     };
+  };
 }
 
 var f = foo.call({id: 1});
@@ -580,9 +579,9 @@ var t4 = f()().call({id: 4});   // id: 1
 
 ```javascript
 function fn(){
-    setTimeout(() => {
-        console.log('args: ', arguments);   // args: [2,3,4,5]
-    }, 100);
+  setTimeout(() => {
+    console.log('args: ', arguments);   // args: [2,3,4,5]
+  }, 100);
 }
  fn(2,3,4,5);
 ```
@@ -592,9 +591,9 @@ function fn(){
 
 ```javascript
 var result = (function fn(){
-    return [
-        (() => this.x).bind({ x: 'innner' })()
-    ]
+  return [
+    (() => this.x).bind({ x: 'innner' })()
+  ]
 }).call({ x: 'outer' });
 
 console.log(result);    // ["outer"]
@@ -611,21 +610,21 @@ console.log(result);    // ["outer"]
 window.lives = 1;
 
 const cat = {
-    lives: 9,
-    jumps: () => {
-        this.lives--;
-        console.log(this.lives);    // 0
-    }
+  lives: 9,
+  jumps: () => {
+    this.lives--;
+    console.log(this.lives);    // 0
+  }
 };
 
 cat.jumps();
 
 
 const pig = {
-    lives: 123,
-    p() {
-      console.log(this.lives);  // 123
-    }
+  lives: 123,
+  p() {
+    console.log(this.lives);  // 123
+  }
 };
 ```
 <p>上面代码中，<code>cat.jumps()</code>方法是一个箭头函数，这是错误的。调用<code>cat.jumps()</code>时，如果是普通函数，该方法内部的<code>this</code>指向<code>cat</code>；如果写成上面那样的箭头函数，使得<code>this</code>指向全局对象，因此不会得到预期结果。这是因为对象不构成单独的作用域，导致<code>jumps</code>箭头函数定义时的作用域就是全局作用域。</p>
@@ -634,7 +633,7 @@ const pig = {
 
 ```javascript
 document.addEventListener('click', () => {
-    this.classList.toggle('on');    // this = Window
+  this.classList.toggle('on');    // this = Window
 });
 ```
 <p>上面代码运行时，点击按钮会报错，因为<code>button</code>的监听函数是一个箭头函数，导致里面的<code>this</code>就是全局对象。如果改成普通函数，<code>this</code>就会动态指向被点击的按钮对象。</p>

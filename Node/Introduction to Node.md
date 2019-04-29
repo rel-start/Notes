@@ -89,8 +89,8 @@ console.log('读取成功');
 // 非阻塞代码
 var fs = require('fs');
 fs.readFile('data.txt', function(err, data) {
-	if (err) return console.error(err);
-	console.log(data.toString());
+  if (err) return console.error(err);
+  console.log(data.toString());
 });
 console.log('读取成功');
 ```
@@ -106,7 +106,7 @@ const eventEmitter = new events.EventEmitter();
 
 // 绑定事件函数
 const conncHander = function conncted() {
-    console.log('conncted被调用了');
+  console.log('conncted被调用了');
 }
 eventEmitter.on('connection', conncHander); // 完成事件绑定
 
@@ -151,14 +151,14 @@ hello.sayHello();
 ```javascript
 // 模块的主要逻辑
 function Hello(){
-	var name;
-	this.setName = function (argName){
-		name = argName;
-	}
+  var name;
+  this.setName = function (argName){
+    name = argName;
+  }
 
-	this.sayHello = function (){
-		console.log(`Hello ${name}`);
-	}
+  this.sayHello = function (){
+    console.log(`Hello ${name}`);
+  }
 }
 
 // 对模块进行导出
@@ -184,12 +184,12 @@ var http = require("http");
 var url = require("url");
 
 function start(route) {
-	http.createServer(function (request, response) {
-		var pathname = url.parse(request.url).pathname;
+  http.createServer(function (request, response) {
+    var pathname = url.parse(request.url).pathname;
 
-		route(pathname, response);
-	}).listen(8888);
-	console.log("Server has started.");
+    route(pathname, response);
+  }).listen(8888);
+  console.log("Server has started.");
 }
 
 module.exports = start;
@@ -280,11 +280,11 @@ $ npm search jquery
 ```javascript
 var http = require('http');
 http.createServer(function (req, res){
-    // 定义HTTP头
-    res.writeHead(200, {'Content-Type': 'text/plan'});
+  // 定义HTTP头
+  res.writeHead(200, {'Content-Type': 'text/plan'});
 
-    // 发送相应数据
-    res.end('Hello World!\n');
+  // 发送相应数据
+  res.end('Hello World!\n');
 }).listen(8000);
 
 // 服务运行后输出一行信息

@@ -5,7 +5,7 @@
 ---
 [TOC]
 
-<h3><a href="https://www.runoob.com/nodejs/nodejs-express-framework.html">Express</a>初始化</h3>
+<h2><a href="https://www.runoob.com/nodejs/nodejs-express-framework.html">Express</a>初始化</h2>
 
 ```javascript
 $ npm init
@@ -26,11 +26,11 @@ var express = require('express');
 var app = express();
  
 app.get('/', function (req, res) {
-   res.send('Hello World');
+  res.send('Hello World');
 });
  
 var server = app.listen(8081, function () {
-   console.log('接口已启动');
+  console.log('接口已启动');
 });
 ```
 
@@ -84,13 +84,13 @@ app.js
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>首页</title>
-    <link rel="stylesheet" href="stylesheets/index.css">
+  <meta charset="UTF-8">
+  <title>首页</title>
+  <link rel="stylesheet" href="stylesheets/index.css">
 </head>
 <body>
-    hello
-    <script src="scripts/index.js"></script>
+  hello
+  <script src="scripts/index.js"></script>
 </body>
 </html>
 ```
@@ -147,11 +147,25 @@ app.get('/index', (req, res) => {
 app.post('/index', upload.array(), function (req, res, next) {
   console.log(req.body);
   res.json(req.body);
-  
 });
 
 var server = app.listen(8081, () => {
   console.log('接口已启动');
 });
 ```
-<p>上面代码块中 <code><a href="https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md">multer</a></code> 需要本地安装 <code>npm install multer --save</code>，以及<code><a href="http://www.expressjs.com.cn/4x/api.html#req.body">req.body</a></code></p>
+<p>上面代码块中 <code><a href="https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md">multer</a></code> <code><a href="https://www.npmjs.com/package/body-parser">body-parser</a></code> 需要本地安装 <code>npm install multer --save</code> <code>npm install body-parser --save</code>，以及<code><a href="http://www.expressjs.com.cn/4x/api.html#req.body">req.body</a></code></p>
+
+<hr />
+<h2><a href="http://www.expressjs.com.cn/guide/using-middleware.html">Express中间件</a></h2>
+
+<h2>路由</h2>
+<p>正常路由标配是一个controller后面配n个action</p>
+
+```
+controller / action
+
+/web/index
+/web/login
+/web/home
+```
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/express-controller.png" /></p>
