@@ -112,6 +112,104 @@ eventEmitter.on('connection', conncHander); // 完成事件绑定
 // 触发事件
 eventEmitter.emit('connection');
 ```
+<h3>模块化的概念与意义</h3>
+
+> 为了让Node.js的文件可以相互调用，Node.js提供了一个简单的模块系统
+> 模块是Node.js应用程序的基本组成部分
+> 文件和模块是一一对应的。一个Node.js文件就是一个模块
+> 这个文件可能是JavaScript代码、JSON或者编译过的C/C++扩展
+> Node.js中存在4类模块（原生模块和3种文件模块）
+
+<h4>Node.js的模块加载流程</h4>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-mkjzlc.png" /></p>
+
+> 从文件模块缓存中加载
+> 从原生模块加载
+> 从文件加载
+
+<p>require方法加载模块</p>
+
+> require方法接受一下集中参数的传递：
+> http、fs、path等，原生模块
+> ./mod或../mod，相对路径的文件模块
+> /pathtomodule/mod，绝对路径的文件模块
+> mod，非原生模块的文件模块
+
+<p>以下是自定义文件模块的一个小案例，简单说明了如何导出模块(<code>hello.js</code>文件)、以及加载模块(<code>main.js</code>文件)</p>
+
+<i class="icon-file"></i> main.js
+```javascript
+const Hello = require('./hello.js');
+
+const hello = new Hello();
+hello.setName('断点');
+hello.sayHello();
+```
+
+<i class="icon-file"></i> hello.js
+```javascript
+// 模块的主要逻辑
+function Hello(){
+	var name;
+	this.setName = function (argName){
+		name = argName;
+	}
+
+	this.sayHello = function (){
+		console.log(`Hello ${name}`);
+	}
+}
+
+// 对模块进行导出
+module.exports = Hello;
+```
+<h4><a href="https://www.runoob.com/nodejs/nodejs-router.html">Node路由</a></h4>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/node-lu.png" /></p>
+<p>下面是一个路由的小案例，分别是<code>index.js</code> <code>server.js</code> <code>router.js</code></p>
+
+<i class="icon-file"></i> index.js
+```javascript
+var server = require("./server");
+var router = require("./router");
+
+// server.js文件模块中通过 module.exports 导出
+// router.js 文件通过 exports.route 输出
+server(router.route);
+```
+
+<i class="icon-file"></i> server.js
+```javascript
+var http = require("http");
+var url = require("url");
+
+function start(route) {
+	http.createServer(function (request, response) {
+		var pathname = url.parse(request.url).pathname;
+
+		route(pathname, response);
+	}).listen(8888);
+	console.log("Server has started.");
+}
+
+module.exports = start;
+```
+
+<i class="icon-file"></i> router.js
+```javascript
+function route(pathname, response) {
+  if (pathname == '/') {
+    response.writeHead(200, { "Content-Type": "text/plain" });
+    response.write("Hello World");
+    response.end();
+  } else if (pathname == '/index/home') {
+    response.end('index');
+  } else {
+    response.end('404');
+  }
+}
+
+exports.route = route;
+```
 
 <hr />
 <h2>包管理器npm</h2>
