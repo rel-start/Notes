@@ -17,6 +17,7 @@
 
 ### ECMAScript
 - [ES6环境搭建](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20Environment.md)
+- [ES5严格模式](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES5%20strict%20model.md)
 - [ES6用法](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20usage.md)
 
 ### Node
