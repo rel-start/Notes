@@ -3,6 +3,7 @@
 标签（空格分隔）： Notes
 
 ---
+[TOC]
 
 <h2>双飞翼布局 - 以及同一行等高(假的等高)</h2>
 <p>三栏布局, 中间的提前</p>
@@ -101,7 +102,124 @@
 <p>请看当前目录下的CSS3常用核心技巧.pptx</p>
 
 <h2>基于移动端的PX与REM转换兼容方案</h2>
-<p>暂时没看</p>
+
+- <a href="https://github.com/amfe/lib-flexible">amfe-flexible</a>
+
+<h3>移动端适配的小案例</h3>
+
+<i class="icon-file"></i> app.js
+```javascript
+/*
+  meta相关
+    name="viewport" 设置视口
+  content
+    width=device-width  还原设备宽度
+    initial-scale=0.5   像素初始比例
+    user-scalable=no    是否允许用户缩放
+    maximum-scale=0.5   允许缩放的最大比例
+    minimum-scale=0.5   允许缩放的最小比例
+*/
+var pixel = 1 / window.devicePixelRatio;
+document.write('<meta name="viewport" content="width=device-width,initial-scale=' + pixel + ',minimum-scale=' + pixel + ',maximum-scale=' + pixel + ',user-scalable=no">');
+window.onload = function () {
+  document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px';
+}
+```
+
+<i class="icon-file"></i> app.scss
+```javascript
+$rem: 37.5;
+
+// 方法一
+@function px2rem($px) {
+  @return #{$px / $rem}rem;
+}
+.box {
+  width: px2rem(375);
+  height: px2rem(375);
+  background-color: black;
+}
+
+// ------------------------------------------------
+// 方法二
+@function strip-units($number){
+  @return $number / 1;
+}
+
+@mixin remCalc($property, $values...) {
+  $max: length($values); //返回$values列表的长度值
+  $remValues: "";
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));
+    $remValues: #{$value / $rem}rem;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  }
+
+  #{$property}: $remValues;
+}
+
+.demo {
+  @include remCalc(width, 45);
+  @include remCalc(height, 45);
+  background-color: #f60;
+  @include remCalc(margin, 1, 0.5, 2, 3);
+}
+```
+<p>上面例子在<code>750px</code>设计搞下，分割成<code>20</code>份，<code>html</code>的<code>font-size:37.5px</code>。如果在 iPhone6 下有个<code>.box</code>宽度为<code>375px</code>，那么计算后的值为<code>10rem</code>。然后设备换到 iPhone7 Plus 下，这里<code>html</code>的<code>font-size</code>就变成了<code>62.1px</code>，那么<code>.box</code>宽度为<code>10rem</code>在 iPhone7 Plus 下的显示为<code>(10*62.1)px</code></p>
+<table>
+    <tr>
+        <th>设计稿宽度</th>
+        <th>iPhone6下（font-size）</th>
+        <th>分割份数（1rem=1份）</th>
+        <th>375px的元素在该设备下的显示状态</th>
+        <th>dpr</th>
+        <th>显示宽度</th>
+    </tr>
+    <tr>
+        <td>750px</td>
+        <td>37.5px（750/20）</td>
+        <td>20</td>
+        <td>10rem（375/37.5）</td>
+        <td>2</td>
+        <td>375px</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>iPhone5下</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>640px</td>
+        <td>32px</td>
+        <td>20</td>
+        <td>320px</td>
+        <td>2</td>
+        <td>320</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>iPhone7 Plus下</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1242px</td>
+        <td>62.1px</td>
+        <td>20</td>
+        <td>620px</td>
+        <td>3</td>
+        <td>414</td>
+    </tr>
+</table>
 
 <h2>Grid布局</h2>
 <p>详细看ppt</p>
