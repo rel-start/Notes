@@ -104,6 +104,7 @@
 <h2>基于移动端的PX与REM转换兼容方案</h2>
 
 - <a href="https://github.com/amfe/lib-flexible">amfe-flexible</a>
+- <a href="http://caibaojian.com/flexible-js.html">flexible.js</a>
 
 <h3>移动端适配的小案例</h3>
 
