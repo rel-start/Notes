@@ -16,8 +16,9 @@
 - [css必备技能](https://github.com/rel-start/Notes/blob/master/CSS/Essential%20skills.md)
 
 ### ECMAScript
-- [ES6环境搭建](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20Environment.md)
+- [JS作用域](https://github.com/rel-start/Notes/blob/master/ECMAScript/Scope%20of%20JS.md)
 - [ES5严格模式](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES5%20strict%20model.md)
+- [ES6环境搭建](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20Environment.md)
 - [ES6用法](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20usage.md)
 
 ### Node
