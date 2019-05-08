@@ -121,7 +121,7 @@ var p = new Person();
 p;  // { name: 2 }
 ```
 
-<h3>原型链是如何实现的？</p>
+<h3>原型链是如何实现的？</h3>
 
 ```javascript
 function Person(name) {
