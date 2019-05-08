@@ -3,6 +3,8 @@
 标签（空格分隔）： Notes
 
 ---
+[TOC]
+
 
 <h2>作用域的种类</h2>
 作用域的大小
@@ -163,3 +165,151 @@ var p = new Person('cl');
 p.go = 1;
 ```
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/scope-of-js-yxl2.png" /></p>
+
+<h3>原型链对象中的constructor</p>
+
+- 每个原型对象prototype中都有一个constructor属性，默认指向函数本身
+- 每个函数的constructor都指向Function。`Array.constructor === Function`
+
+```javascript
+Person.prototype.constructor === Person;    // true
+Function.prototype.constructor === Function;    // true
+Object.prototype.constructor === Object;    // true
+Object.constructor === Function;    // true
+```
+
+练习一
+```javascript
+function fun(n, o) {
+  console.log(o);
+  return {
+    fun: function (m) {
+      return fun(m, n);
+    }
+  }
+}
+
+var a = fun(0);
+a.fun(1); a.fun(2);
+var b = fun(0).fun(1).fun(2).fun(3);
+var c = fun(0).fun(1);
+c.fun(2); c.fun(3);
+```
+
+练习一的解题过程如下(跳过a的)：
+<table>
+  <caption>var b</caption>
+  <tr>
+    <th></th>
+    <th>第一次</th>
+    <th>第二次</th>
+    <th>第三次</th>
+    <th>第四次</th>
+  </tr>
+  <tr>
+    <td>外Fun</td>
+    <td>
+      <p>n:0</p>
+      <p>o:undefined</p>
+    </td>
+    <td>
+      <p>n:1</p>
+      <p>o:0</p>
+    </td>
+    <td>
+      <p>n:2</p>
+      <p>o:1</p>
+    </td>
+    <td>
+      <p>n:3</p>
+      <p>o:2</p>
+    </td>
+  </tr>
+  <tr>
+    <td>内Fun</td>
+    <td></td>
+    <td>
+      <p>m:1</p>
+      <p>n:0</p>
+    </td>
+    <td>
+      <p>m:2</p>
+      <p>n:1</p>
+    </td>
+    <td>
+      <p>m:3</p>
+      <p>n:2</p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <caption>var c</caption>
+  <tr>
+    <th></th>
+    <th>第一次</th>
+    <th>第二次</th>
+  </tr>
+  <tr>
+    <td>外Fun</td>
+    <td>
+      <p>n:0</p>
+      <p>o:undefined</p>
+    </td>
+    <td>
+      <p>n:1</p>
+      <p>o:0</p>
+    </td>
+  </tr>
+  <tr>
+    <td>内Fun</td>
+    <td></td>
+    <td>
+      <p>m:1</p>
+      <p>n:0</p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <caption>c.fun(2)</caption>
+  <tr>
+    <th></th>
+    <th>第一次</th>
+  </tr>
+  <tr>
+    <td>外Fun</td>
+    <td>
+      <p>n:2</p>
+      <p>o:1</p>
+    </td>
+  </tr>
+  <tr>
+    <td>内Fun</td>
+    <td>
+      <p>m:2</p>
+      <p>n:1（这是从c变量传过来的）</p>
+    </td>
+  </tr>
+</table>
+<table>
+  <caption>c.fun(3)</caption>
+  <tr>
+    <th></th>
+    <th>第一次</th>
+  </tr>
+  <tr>
+    <td>外Fun</td>
+    <td>
+      <p>n:2</p>
+      <p>o:1</p>
+    </td>
+  </tr>
+  <tr>
+    <td>内Fun</td>
+    <td>
+      <p>m:3</p>
+      <p>n:1（这是从c变量传过来的）</p>
+    </td>
+  </tr>
+</table>
