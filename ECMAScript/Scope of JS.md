@@ -166,7 +166,7 @@ p.go = 1;
 ```
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/scope-of-js-yxl2.png" /></p>
 
-<h3>原型链对象中的constructor</p>
+<h3>原型链对象中的constructor</h3>
 
 - 每个原型对象prototype中都有一个constructor属性，默认指向函数本身
 - 每个函数的constructor都指向Function。`Array.constructor === Function`
