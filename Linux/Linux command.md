@@ -3,6 +3,7 @@
 标签（空格分隔）： Notes
 
 ---
+[TOC]
 
 <h2>虚拟机(VMware, Virtual Box，Virtual PC)</h2>
 
@@ -24,14 +25,14 @@
 <h3>Linux基本操作命令-Terminal</h3>
 <p>linux命令大全: http://man.linuxde.net/</p>
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/linux-default-directory.png" /></p>
-<p>清理</p>
+<p>clear命令</p>
 
 ```javascript
 // 清理
 # clear
 ```
 
-<p>查看</p>
+<p>ls、ll、pwd、dir命令</p>
 
 ```javascript
 // 列出当前目录的内容
@@ -52,7 +53,7 @@
 ```
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/ls-a.png" /></p>
 
-<p>切换目录</p>
+<p>cd命令</p>
 
 ```javascript
 // 切换目录 linux下严格区分大小写
@@ -64,30 +65,32 @@
 // 返回当前用户的目录`/home/point`
 # cd ~
 ```
-<p>修改文件或目录名</p>
+<p>mv命令</p>
 
 ```javascript
 // 将文件ex3改名为new1
 #mv ex3 new1
 ```
-<p>创建新目录</p>
+<p>mkdir命令</p>
 
 ```javascript
-// 在同一目录不能创建相同的目录或文件
+// 创建文件，在同一目录不能创建相同的目录或文件
 # mkdir 文件名
 ```
-<p>拷贝</p>
+<p>cp命令</p>
 
 ```javascript
+// 拷贝文件
 # cp 源文件 路径/复制后的文件名
 
 // 复制目录
 # cp -r 目录名
 ```
 
-<p>删除</p>
+<p>rm命令</p>
 
 ```javascript
+// 删除
 # rm 文件名
 
 // 删除目录
@@ -101,28 +104,25 @@
 # ip addr
 ```
 
-<p>登出</p>
+<p>exit命令</p>
 
 ```javascript
+// 登出
 # exit
 ```
 
-<p>挂在文件（usb）</p>
+<p>mount命令</p>
 
 ```javascript
+// 挂载文件（如. usb）
 # mount
 ```
 
-<h3>修改网卡</h3>
+<p>yum命令</p>
 
 ```javascript
-# cd /etc/sysconfig/network-scripts
-
-// 查看网卡，正常配置是 ONBOOT="yes"
-# cat ifcfg-ens33
-
-// 1. 断掉网络
-# ifdown ens33
+// 安装nano
+# yum install nano
 ```
 
 <hr/>
@@ -136,8 +136,66 @@
 # scp ./notes.xmind root@192.168.43.185:/root
 ```
 
+<h3>修改网卡</h3>
+
+```javascript
+# cd /etc/sysconfig/network-scripts
+
+// 查看网卡，正常配置是 ONBOOT="yes"
+# cat ifcfg-ens33
+
+// 1. 断掉网络
+# ifdown ens33
+
+// 2. 修改配置
+# vi ifcfg-ens33
+
+# ifup ens33
+```
+
 <hr/>
-<h2><a href="https://baike.baidu.com/item/Vi%E7%BC%96%E8%BE%91%E5%99%A8/3521624?fr=aladdin">vi编辑器</a><h2>
+<h2>nginx服务器</h2>
+
+```javascript
+# ssh root@192.168.0.1
+
+// 查看服务状态
+# systemctl {status | stop | start | restart} nginx
+
+# nginx -s reload
+```
+
+<hr/>
+<h2>安装NodeJS</h2>
+
+```javascript
+// 添加官⽅的yum源
+# curl -sL https://rpm.nodesource.com/setup_11.x | bash -
+// yum命令安装（-y 所有过程都自动yes）
+# yum install -y nodejs
+// 查看安装的版本
+# node -v
+```
+
+<hr/>
+<h2>关于某些⽹站⽆法访问的解决⽅法</h2>
+
+```javascript
+var hexCharCodeStr =
+'68747470733a2f2f737068617264322e6769746875622e696f2f6766772f';
+var rawStr = hexCharCodeStr.trim();
+var len = rawStr.length;
+var curCharCode;
+var resultStr = [];
+for(var i = 0; i < len;i = i + 2) {
+  curCharCode = parseInt(rawStr.substr(i, 2), 16);
+  resultStr.push(String.fromCharCode(curCharCode));
+}
+console.log( resultStr.join("") );
+```
+
+<hr/>
+<h2><a href="https://baike.baidu.com/item/Vi%E7%BC%96%E8%BE%91%E5%99%A8/3521624?fr=aladdin">vi编辑器</a></h2>
 <h3>创建hello.js 并进入</h3>
 
 ```
@@ -145,7 +203,7 @@
 ```
 <h3>退出vi及保存文件</h3>
 <p>命令行模式下保存并退出：输入hello world</p>
-<p>在[命令行模式（command mode）]下，按一下[：]冒号键进入[Last line mode]，例如：</p>
+<p><code>esc</code>进入命令行模式（command mode），按一下<code>:</code>冒号键进入[Last line mode]，例如：</p>
 
 ```
 :w filename //（输入 [w filename]将文章以指定的文件名filename保存）
