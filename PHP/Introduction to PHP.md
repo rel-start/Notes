@@ -116,6 +116,7 @@ myTest(5);
 ?>
 ```
 
+<hr/>
 <h2>PHP 5 echo 和 print 语句</h2>
 <p>echo 和 print 区别:</p>
 
@@ -140,9 +141,11 @@ print "这是一个", "字符串，", "使用了", "多个", "参数。";   // �
 ?>
 ```
 
+<hr/>
 <h2>PHP EOF(heredoc)</h2>
 <p><a href="https://www.runoob.com/php/php-eof-heredoc.html">PHP EOF(heredoc)</a>是一种在命令行shell（如sh、csh、ksh、bash、PowerShell和zsh）和程序语言（像Perl、PHP、Python和Ruby）里定义一个字符串的方法。</p>
 
+<hr/>
 <h2>PHP 5 数据类型</h2>
 
 - String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。
@@ -259,6 +262,7 @@ var_dump($x);  // NULL
 ?>
 ```
 
+<hr/>
 <h2>PHP 5 常量</h2>
 <p>设置常量，使用 define() 函数，函数语法如下：</p>
 
@@ -303,6 +307,7 @@ myTest();    // 输出 "欢迎访问 Runoob.com"
 ?>
 ```
 
+<hr/>
 <h2>PHP 字符串变量</h2>
 <p>字符串变量用于存储并处理文本。</p>
 
@@ -339,6 +344,7 @@ echo strpos("Hello world!","world");   // 6
 
 <h3><a href="https://www.runoob.com/php/php-ref-string.html">完整的 PHP String 参考手册</a></h3>
 
+<hr/>
 <h2>PHP 运算符</h2>
 <h3>PHP 算术运算符</h3>
 <table>
@@ -377,6 +383,7 @@ echo $txt1 . " " . $txt2;
 ?>
 ```
 
+<hr/>
 <h2>PHP 数组</h2>
 <p>数组能够在单个变量中存储多个值：</p>
 
@@ -448,6 +455,7 @@ foreach($age as $x=>$x_value)
 ?>
 ```
 
+<hr/>
 <h2>PHP 超级全局变量</h2>
 <p>PHP中预定义了几个超级全局变量（superglobals） ，这意味着它们在一个脚本的全部作用域中都可用。 你不需要特别说明，就可以在函数及类中使用。</p>
 <h3>PHP $GLOBALS</h3>
@@ -490,6 +498,7 @@ echo "<br>";
 
 <h3>PHP $_GET</h3>
 
+<hr/>
 <h2>PHP 面向对象</h2>
 
 <h3>面向对象内容</h3>
@@ -739,5 +748,210 @@ class MyClass2 extends MyClass
 $myclass2 = new MyClass2();
 $myclass2->MyPublic(); // 正常执行
 $myclass2->Foo2(); // 公有的和受保护的都可执行，但私有的不行
+?>
+```
+
+<h4>接口</h4>
+<p>使用接口（<code>interface</code>），可以指定某个类必须实现哪些方法，但不需要定义这些方法的具体内容。</p>
+<p>接口是通过 <code>interface</code> 关键字来定义的，就像定义一个标准的类一样，但其中定义所有的方法都是空的。</p>
+<p>接口中定义的所有方法都必须是公有，这是接口的特性。</p>
+<p>要实现一个接口，使用 <code>implements</code></p> 操作符。类中必须实现接口中定义的所有方法，否则会报一个致命错误。类可以实现多个接口，用逗号来分隔多个接口的名称。</p>
+
+```php
+<?php
+// 声明一个'iTemplate'接口
+interface iTemplate
+{
+  public function setVariable($name, $var);
+  public function getHtml($template);
+}
+
+// 实现接口
+class Template implements iTemplate
+{
+  private $vars = array();
+  
+  public function setVariable($name, $var) {
+    $this->vars[$name] = $var;
+  }
+
+  public function getHtml($template) {
+    foreach ($this->vars as $name => $value) {
+      $template = str_replace($name, $value, $template);
+    }
+    return $template;
+  }
+}
+
+$arr = array("blue", "red", "green", "yellow");
+$t = new Template();
+$t->setVariable('blue', 'red');
+$result = $t->getHtml($arr);
+var_dump($result);
+?>
+```
+
+<h4>常量</h4>
+<p>可以把在类中始终保持不变的值定义为常量。在定义和使用常量的时候不需要使用 <code>$</code> 符号。</p>
+<p>常量的值必须是一个定值，不能是变量，类属性，数学运算的结果或函数调用。</p>
+<p>自 PHP 5.3.0 起，可以用一个变量来动态调用类。但该变量的值不能为关键字（如 <code>self</code>，<code>parent</code> 或 <code>static</code>）。</p>
+
+```php
+class MyClass
+{
+  const constant = '常量值';
+
+  function showConstant()
+  {
+    echo self::constant . PHP_EOL;
+  }
+}
+
+$myclass = new MyClass();
+$myclass->showConstant();
+
+$classname = "MyClass";
+echo $classname::constant . PHP_EOL; // 自 5.3.0 起
+
+echo MyClass::constant . PHP_EOL;
+
+echo $myclass::constant . PHP_EOL; // 自 PHP 5.3.0 起
+```
+
+<h4>抽象类</h4>
+<p>任何一个类，如果它里面至少有一个方法是被声明为抽象的，那么这个类就必须被声明为抽象的。</p>
+<p>定义为抽象的类不能被实例化。</p>
+<p>被定义为抽象的方法只是声明了其调用方式（参数），不能定义其具体的功能实现。</p>
+<p>继承一个抽象类的时候，子类必须定义父类中的所有抽象方法；另外，这些方法的访问控制必须和父类中一样（或者更为宽松）。例如某个抽象方法被声明为受保护的，那么子类中实现的方法就应该声明为受保护的或者公有的，而不能定义为私有的。</p>
+
+```php
+<?php
+abstract class AbstractClass
+{
+  // 强制要求子类定义这些方法
+  abstract protected function getValue();
+  abstract protected function prefixValue($prefix);
+
+  // 普通方法（非抽象方法）
+  public function printOut()
+  {
+    print $this->getValue() . PHP_EOL;
+  }
+}
+
+class ConcreteClass1 extends AbstractClass
+{
+  protected function getValue()
+  {
+    return "ConcreteClass1";
+  }
+  public function prefixValue($prefix)
+  {
+    return "{$prefix}ConcreteClass1";
+  }
+}
+
+class ConcreteClass2 extends AbstractClass
+{
+  protected function getValue()
+  {
+    return "ConcreteClass2";
+  }
+  public function prefixValue($prefix)
+  {
+    return "{$prefix}ConcreteClass2";
+  }
+}
+
+$class1 = new ConcreteClass1;
+$class1->printOut();
+echo $class1->prefixValue('FOO_'),'<br/>';
+
+$class2 = new ConcreteClass2;
+$class2->printOut();
+echo $class2->prefixValue('FOO_');
+?>
+```
+
+<h4>Static 关键字</h4>
+<p>声明类属性或方法为 <code>static</code>(静态)，就可以不实例化类而直接访问。</p>
+<p>静态属性不能通过一个类已实例化的对象来访问（但静态方法可以）。</p>
+<p>由于静态方法不需要通过对象即可调用，所以伪变量 $this 在静态方法中不可用。</p>
+<p>静态属性不可以由对象通过 <code>-></code> 操作符来访问。</p>
+
+```php
+<?php
+class Foo {
+  public static $my_static = 'foo';
+
+  public function staticValue(){
+    return self::$my_static;
+  }
+}
+
+print Foo::$my_static;  // foo
+
+$foo = new Foo();
+print $foo->staticValue();  // foo
+?>
+```
+
+<h4>Final 关键字</h4>
+<p>PHP 5 新增了一个 <code>final</code> 关键字。如果父类中的方法被声明为</p> <p><code>final</code>，则子类无法覆盖该方法。如果一个类被声明为 <code>final</code>，则不能被继承。</p>
+
+```php
+<?php
+class BaseClass {
+  public function test() {
+    echo "BaseClass::test() called" . PHP_EOL;
+  }
+   
+  final public function moreTesting() {
+    echo "BaseClass::moreTesting() called"  . PHP_EOL;
+  }
+}
+
+class ChildClass extends BaseClass {
+  public function moreTesting() {
+    echo "ChildClass::moreTesting() called"  . PHP_EOL;
+  }
+}
+// 报错信息 Fatal error: Cannot override final method BaseClass::moreTesting()
+?>
+```
+
+<h4>调用父类构造方法</h4>
+<p>PHP 不会在子类的构造方法中自动的调用父类的构造方法。要执行父类的构造方法，需要在子类的构造方法中调用 <code>parent::__construct()</code> 。</p>
+
+```php
+<?php
+class BaseClass
+{
+  function __construct() {
+    print "BaseClass 类中构造方法" . '<br/>';
+  }
+}
+
+class SubClass extends BaseClass
+{
+  function __construct() {
+    parent::__construct();
+    print "SubClass 类中构造方法" . '<br/>';
+  }
+}
+
+class OtherSubClass extends BaseClass
+{
+  // 继承 BaseClass 的构造方法
+}
+
+// 调用 BaseClass 构造方法
+$obj = new BaseClass;
+
+// 调用 SubClass 构造方法
+$obj = new SubClass;
+
+// 调用 OtherSubClass 构造方法
+$obj = new OtherSubClass;
 ?>
 ```
