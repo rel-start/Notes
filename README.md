@@ -35,7 +35,10 @@
 - [数据类型](https://github.com/rel-start/Notes/blob/master/Java/Java%20data%20type.md)
 
 ### PHP
-- [PHP入门](https://github.com/rel-start/Notes/blob/master/PHP/Introduction%20to%20PHP.md)
+- [PHP简介](https://github.com/rel-start/Notes/blob/master/PHP/Introduction%20to%20PHP.md)
+- [PHP高级](https://github.com/rel-start/Notes/blob/master/PHP/PHP%20advanced.md)
+- [PHP表单](https://github.com/rel-start/Notes/blob/master/PHP/PHP%20form.md)
+- [PHP MySQL](https://github.com/rel-start/Notes/blob/master/PHP/PHP-MySQL.md)
 
 
 
