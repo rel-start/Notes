@@ -16,7 +16,7 @@
 - [css必备技能](https://github.com/rel-start/Notes/blob/master/CSS/Essential%20skills.md)
 
 ### ECMAScript
-- [JS作用域](https://github.com/rel-start/Notes/blob/master/ECMAScript/Scope%20of%20JS.md)
+- [JS精粹](https://github.com/rel-start/Notes/blob/master/ECMAScript/Js%20essence.md)
 - [ES5严格模式](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES5%20strict%20model.md)
 - [ES6环境搭建](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20Environment.md)
 - [ES6用法](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20usage.md)
@@ -29,6 +29,7 @@
 - [linux基本命令](https://github.com/rel-start/Notes/blob/master/Linux/Linux%20command.md)
 - [Windows基本命令](https://github.com/rel-start/Notes/blob/master/Linux/Windows%20command.md)
 - [Web服务器基础原理和概念](https://github.com/rel-start/Notes/blob/master/Linux/Web%20server.md)
+- [后端语言核心知识](https://github.com/rel-start/Notes/blob/master/Linux/Backend%20language.md)
 
 ### Java
 - [java简单配置](https://github.com/rel-start/Notes/blob/master/Java/Java%20config.md)
@@ -39,6 +40,7 @@
 - [PHP高级](https://github.com/rel-start/Notes/blob/master/PHP/PHP%20advanced.md)
 - [PHP表单](https://github.com/rel-start/Notes/blob/master/PHP/PHP%20form.md)
 - [PHP MySQL](https://github.com/rel-start/Notes/blob/master/PHP/PHP-MySQL.md)
+- [PHP PDO](https://github.com/rel-start/Notes/blob/master/PHP/PHP%20PDO.md)
 
 
 
