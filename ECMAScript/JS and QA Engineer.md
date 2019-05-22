@@ -345,10 +345,10 @@ backstop_data
 docs
 docs/backstop_data
 backstop.json
-package.jo
+package.json
 ```
 
-<i class="icon-file"></i> mochaRunner.js
+<i class="icon-file"></i> backstop.json
 ```javascript
 {
   "id": "backstop_default",
