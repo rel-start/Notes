@@ -3,8 +3,9 @@
 标签（空格分隔）： Notes
 
 ---
+[TOC]
 
-<h2>测试核心概念</h2>
+<h2>测试核心概念<sup>源码在cs1</sup></h2>
 
 - 单元测试
 - 性能测试
@@ -12,7 +13,9 @@
 - 功能测试
 
 <h2>自动化单元测试</h2>
+
 需要安装的包
+
 ```javascript
 // npm ERR! Unexpected end of JSON input while parsing near
 // 解决方法 npm cache clean --force
@@ -31,6 +34,7 @@
 ```
 
 文件目录如下
+
 ```
 tests
 tests/unit
@@ -180,11 +184,13 @@ module.exports = function (config) {
 
 `Nightwatch.js`也是做e2e的
 需要安装的包
+
 ```javascript
 # npm install selenium-webdriver
 ```
 
 文件目录如下
+
 ```
 tests
 tests/e2e
@@ -234,12 +240,14 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 
 <h3><a href="https://rize.js.org/zh-CN/#api-%E5%8F%82%E8%80%83">Rize</a></h3>
 需要安装的包
+
 ```javascript
 # npm install --save-dev puppeteer rize
 ```
 
 <h2>React单元测试</h2>
 需要安装的包
+
 ```javascript
 # npm install --save-dev react-testing-library
 # npm install --save react-dom react
@@ -248,6 +256,7 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 ```
 
 文件目录如下
+
 ```
 src
 src/index.js
@@ -320,6 +329,7 @@ describe("基础React单元测试", function () {
 <h2>设计稿比对(PhantomJS、backstopjs)</h2>
 
 需要安装的包
+
 ```javascript
 // https://www.npmjs.com/package/backstopjs
 # npm install -g backstopjs
@@ -329,6 +339,7 @@ describe("基础React单元测试", function () {
 ```
 
 文件目录如下
+
 ```
 backstop_data
 docs
@@ -401,6 +412,7 @@ package.jo
 <h2>异步接口测试(<a href="https://mochajs.org/#installation">mocha</a>)</h2>
 
 文件目录如下 node ./mochaRunner.js
+
 ```
 docs
 docs/mochawesome-reporter
@@ -412,6 +424,7 @@ package.json
 ```
 
 需要安装的包
+
 ```javascript
 # npm install --global mocha
 // https://mochajs.org/#running-mocha-in-the-browser
