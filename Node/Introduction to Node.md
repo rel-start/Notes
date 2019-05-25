@@ -26,7 +26,7 @@ $ node --inspect-brk index.js
 <h3>Node环境</h3>
 
 ```javascript
-// 进入REPL环境, 该环境下可以使用js语法
+// 进入REPL环境, 该环境下可以使用js语法。下面的命令需在node环境下
 $ node
 
 // 退出当前终端

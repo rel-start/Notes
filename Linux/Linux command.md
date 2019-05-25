@@ -102,6 +102,7 @@
 ```javascript
 // 查看桥接的ip
 # ip addr
+# ifconfig
 ```
 
 <p>exit命令</p>
