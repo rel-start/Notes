@@ -1010,3 +1010,9 @@ console.log(result.val());
 > 3. [lodashJS](https://lodash.com/docs/4.17.11)、lazy(惰性求值)
 > 4. [underscoreJS](https://underscorejs.org/)
 > 5. ramdajs
+
+<h2>实际应用场景</h2>
+
+> - 公司的公用库
+> - 易调试、热部署、并发
+> - 单元测试
