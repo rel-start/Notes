@@ -641,6 +641,7 @@ square(3); // 9
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/fcyrq.png" /></p>
 
 <h2>容器、Functor（函子）</h2>
+
 `$(...)` 返回的对象并不是一个原生的DOM对象，而是对于原生对象的一种封装，这在某种意义上就是一个“容器”（但它并不函数式）。
 
 > - `Functor`（函子）遵守一些特定规则的容器类型。
@@ -687,6 +688,7 @@ class Functor {
 上面的例子说明，函数编程里面的运算，都是通过函子完成，即运算不直接针对值，而是针对这个值得容器----函子。函子本身具有对外接口（`map`方法），各种函数就是运算符，通过接口接入容器，引发容器里面的值得变形。
 > - 因此，学习函数式编程，实际上就是学习函子的各种运算。由于可以把运算方法封装在函子里面，所以又衍生出各种不同类型的函子，有多少种运算，就有多少种函子。函数式编程就变成了运用不同的函子，解决实际问题。
 
+<hr/>
 <h3>of 方法</h3>
 
 > - 你可能注意到了，上面生成新的函子的时候，用了
@@ -715,6 +717,7 @@ Functor.of(2).map(function (two) {
 // => Functor {val: 4}
 ```
 
+<hr/>
 <h3>Maybe 函子(if)</h3>
 
 ```javascript
@@ -722,10 +725,6 @@ Functor.of(null).map(x => x.toUpperCase());
 // => TypeError: Cannot read property 'toUpperCase' of null
 
 class Maybe extends Functor {
-  constructor(val) {
-    super(val);
-  }
-
   map(f) {
     return this.val ? Maybe.of(f(this.val)) : Maybe.of(null);
   }
@@ -742,10 +741,6 @@ Maybe.of(null).map(x => x.toUpperCase());
 下面容器我们称之为 Maybe（原型来⾃于Haskell）
 ```javascript
 class Maybe extends Functor {
-  constructor(val) {
-    super(val);
-  }
-  
   map(f) {
     return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.val));
   }
@@ -760,12 +755,14 @@ class Maybe extends Functor {
 }
 ```
 
+<hr/>
 <h3>错误处理、Either</h3>
 
 > 1. 我们的容器能做的事情太少了，`try/catch/throw` 并不是纯的(err参数)，因为它从外部接管了我们的函数，并且这个函数时抛弃了它的返回值。
 > 2. `Promise` 是可以调用 `catch` 来集中处理错误的。
 > 3. 事实上 `Either` 并不只是用来做错误处理的，它表示了逻辑或，范畴学里的 `coproduct`。
 
+<hr/>
 <h3>Either</h3>
 条件运算符 `if...else` 是最常见的运算之一，函数编程里面，使用 `Either` 函子表达。`Either` 函子内部有两个值：左值（left）和右值（Right）。右值是正常情况下使用的值，左值是右值不存在时使用的默认值。
 
@@ -839,16 +836,13 @@ getAge({name: 'stark'}).map(age => 'Age is ' + age);
 
 `Left` 可以让调用链中任意一环的错误立刻返回到调用链的尾部，这给我们错误处理带来了很大的方便，再也不用一层又一层的 `try/catch`。
 
-<h3>AP函子</h2>
+<hr/>
+<h3>AP函子</h3>
 
 > 函子里面包含的值，完全可能是函数。我们可以想象这样一种情况，一个函子的值是数值，另一个函子的值是函数。
 
 ```javascript
 class Ap extends Functor {
-  constructor(val) {
-    super(val);
-  }
-
   ap(F) {
     // 下面 f 变量的 F.val=2; this.val=addTwo(2); Ap.of(4)=new Ap(4);
     return Ap.of(this.val(F.val));
@@ -864,4 +858,147 @@ var addTwo = function (x) {
 
 var f = Ap.of(addTwo) // Ap {val: ƒ}
           .ap(Functor.of(2)); // Ap {val: 4}
+```
+
+<hr/>
+<h3>IO</h3>
+
+1. 真正的程序总要去接触肮脏的世界。
+
+```javascript
+function readLocalStorage(){
+ return window.localStorage;
+}
+```
+
+2. IO 跟前面几个 `Functor` 不同的地方在于，它的 `__value` 是一个函数。它把不纯的操作（比如IO、网络请求、DOM）包裹到一个函数内，从而延迟这个操作的执行。所以我们认为，IO包含的是被包裹的操作的返回值。
+3. IO 其实也算是惰性函数
+4. IO 负责了调用链基类了很多很多不纯的操作，带来的复杂性和不可维护性。
+
+```javascript
+import _ from 'lodash';
+var componse = _.flowRight;
+
+class IO {
+  constructor(f) {
+    this.__value = f;
+  }
+  
+  map(f) {
+    return new IO(componse(f, this.__value));
+  }
+  
+  static of(x) {
+    return new IO(_ => x)
+  }
+}
+```
+
+我们先后提到了 Maybe、Either、IO 这三种强⼤的 Functor，
+在链式调⽤、惰性求值、错误捕获、输⼊输出中都发挥着巨⼤
+的作⽤。事实上 Functor 远不⽌这三种。
+但依然有问题困扰着我们：
+
+1. 如何处理嵌套的 Functor 呢？（⽐如 Maybe(IO(42))）
+2. 如何处理⼀个由⾮纯的或者异步的操作序列呢？
+
+<hr/>
+<h3>Monad</h3>
+
+1. `Monad` 就是一种设计模式，表示将一个运算过程，通过函数拆解成互相连接的多个步骤。你只要提供下一步运算所需的函数，整个运算就会自动进行下去。
+2. `Promise` 就是一种 `Monad`。
+3. `Monad` 让我们避开了嵌套地狱，可以轻松地进行深度嵌套的函数编程，比如IO和其他异步任务。
+4. 记得让上面的 `IO` 集成 `Monad`。
+
+```javascript
+class Monad extends Functor {
+ join() {
+ return this.val;
+ }
+ flatMap(f) {
+ return this.map(f).join();
+ }
+}
+```
+Monad函子的作用是，总是返回一个单层的函子。它有一个`flatMap`方法，与`map`方法作用相同，唯一的区别是如果生成了一个嵌套函子，它会取出后者内部的值，保证返回的永远是一个单层的容器，不会出现嵌套的情况。
+
+如果函数`f`返回的是一个函子，那么`this.map(f)`就会生成一个嵌套的函子。所以，`join`方法保证了`flatMap`方法总是返回一个单层的函子。这意味着嵌套的函子会被铺平（flatten）。
+
+**例1**
+```javascript
+var fs = require('fs');
+var _ = require('lodash');
+//基础函子
+class Functor {
+  constructor(val) {
+    this.val = val;
+  }
+  map(f) {
+    return new Functor(f(this.val));
+  }
+}
+//Monad 函子
+class Monad extends Functor {
+  join() {
+    return this.val;
+  }
+  flatMap(f) {
+    //1.f == 接受一个函数返回的事IO函子
+    //2.this.val 等于上一步的脏操作
+    //3.this.map(f) compose(f, this.val) 函数组合 需要手动执行
+    //4.返回这个组合函数并执行 注意先后的顺序
+    return this.map(f).join();
+  }
+}
+var compose = _.flowRight;
+//IO函子用来包裹📦脏操作
+class IO extends Monad {
+  //val是最初的脏操作
+  static of(val) {
+    return new IO(val);
+  }
+  map(f) {
+    return IO.of(compose(f, this.val))
+  }
+}
+var readFile = function (filename) {
+  return IO.of(function () {
+    return fs.readFileSync(filename, 'utf-8');
+  });
+};
+var print = function (x) {
+  console.log("橘子-");
+  return IO.of(function () {
+    console.log("苹果-")
+    return x + "函数式";
+  });
+}
+var tail = function (x) {
+  console.log(x);
+  return IO.of(function () {
+    return x + "【京程一灯】";
+  });
+}
+const result = readFile('./11.txt')
+  //flatMap 继续脏操作的链式调用
+  // .flatMap(print);
+  .flatMap(print)()
+  .flatMap(tail)();
+console.log(result.val());
+// console.log(result().val());
+
+/**
+ * 第1。【readFile()】filename='./11.txt'; 执行后就返回 IO.of() 也就是等于 new IO(()=>fs.readFileSync(filename, 'utf-8'))
+ *        - filename='./11.txt'；this.val=()=>fs.readFileSync(filename, 'utf-8')
+ * 
+ * 第2。【Monad下面的 flatMap()】this=IO；f=print; this.map(print)执行后 又生成新 IO 函子 
+ *        - this.map(f)=new IO(val=componse(print, fs.readFileSync(filename, 'utf-8')); 回到 Monad 下的flatMap函数。this.map(f).join(); 返回 this.val=componse(print, this.val);
+ *        - 接下来执行 .flatMap(print)()=componse(print, rf=()=>fs.readFileSync(filename, 'utf-8'))();下面用 rf代替()=>fs.readFileSync(filename, 'utf-8')
+ *        - 也就是 print(x=rf('./11.txt'))；打印出print里面的 console.log('橘子-')；并且还读到了文件。tis.val=function(){console.log('苹果-')}
+ * 
+ * 第3. 【又到Monad下面的 flatMap()】f=tail函数；this.map(tail)=new IO(val); this.val=componse(tail,val=print执行后的函数)。在join下 var result = componse(tail,val=function(){console.log('苹果-')})
+ *        - 执行 .falatMap(tail)()。先答应console.log('苹果-')；返回的值作为tail(x+'函数式')的参数。现在 var result = tail()的返回函数=new IO(val=function (){ return x+'京城一灯' })
+ * 
+ * 第4。最后result.val()执行 就返回'hello函数式【京程一灯】'。hello是文件的内容
+ */
 ```
