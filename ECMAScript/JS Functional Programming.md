@@ -1002,3 +1002,11 @@ console.log(result.val());
  * 第4。最后result.val()执行 就返回'hello函数式【京程一灯】'。hello是文件的内容
  */
 ```
+
+<h2>流行的几大函数式编程库</h2>
+
+> 1. [RxJS](https://cn.rx.js.org/)
+> 2. cycleJS
+> 3. [lodashJS](https://lodash.com/docs/4.17.11)、lazy(惰性求值)
+> 4. [underscoreJS](https://underscorejs.org/)
+> 5. ramdajs
