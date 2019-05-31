@@ -14,9 +14,8 @@
 
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/js-hssbc.png" /></p>
 
-> 所有成员是一个集合
-
-> 变形关系
+> 1. 所有成员是一个集合<br/>
+> 2. 变形关系
 
 <hr/>
 <h2>函数式编程的基础理论</h2>
@@ -83,7 +82,8 @@ var checkage = age => age > 18;
 
 <h2>纯度和幂等性</h2>
 
-> 幂等性是指执行无数次后还具有相同的效果，同一的参数运行一次函数应该> 与连续两次结果一致。幂等性在函数式编程中与纯度相关，但有不一致。
+> 幂等性是指执行无数次后还具有相同的效果，同一的参数运行一次函数应该与连续两次结果一致。幂等性在函数式编程中与纯度相关，但有不一致。
+
 `Math.abs(Math.abs(-42))`
 
 <h2>偏应用函数</h2>
@@ -92,7 +92,6 @@ var checkage = age => age > 18;
 偏函数之所以“偏”，在就在于其只能处理那些能与至少一个`case`语句匹配的输入，而不能处理所有可能的输入。
 
 ```javascript
-
 const partial = (f, ...args) => {
   return (...moreArgs) => {
     f(...args, ...moreArgs);
@@ -186,16 +185,64 @@ var first = arr => arr[0];
 var reverse = arr => arr.reverse();
 var last = compose(first, reverse);
 last([1,2,3,4,5]); // 5
+
+/**
+ * 执行 last([1,2,3,4,5])
+ *
+ * - x=[1,2,3,4,5];  f=first;  g=reverse;
+ * - g=reverse([1,2,3,4,5])=[5,4,3,2,1]
+ * - f=first([5,4,3,2,1])=5
+ */
 ```
 
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/hszh.png" /></p>
-我们定义的`compose`就像双面胶一样，可以把任何两个纯函数结合到一起(包括`componse`)。
-```javascript
-var add1 = x => x + 1;
 
-var res = compose(add1, last);
-console.log(res([1, 2, 3, 4, 5]));
+我们定义的`compose`就像双面胶一样，可以把任何两个纯函数结合到一起(包括`componse`)。
+
+```javascript
+  const compose = (f, g) => {
+    return x => {
+      return f(g(x));
+    };
+  }
+  var first = arr => arr[0];
+
+  var reverse = arr => arr.reverse();
+  var last = compose(first, reverse);
++ var add1 = x => x + 1;
+  last([1, 2, 3, 4, 5]); // 5
+
++ var res = compose(add1, last);
++ console.log(res([1, 2, 3, 4, 5]));
 ```
 
 <h2>Point Free</h2>
-把一些对象自带的方法转化成纯函数，不要命名转瞬即逝
+
+把一些对象自带的方法转化成纯函数，不要命名转瞬即逝的中间变量。
+
+```javascript
+const f = str => str.toUpperCase().split(' ');
+```
+
+这个函数中，我们使用了 `str` 作为我们的中间变量，但这个中间变量除了让我们代码变得长了一点以外是毫无意义的。
+
+下面是优化后的代码
+
+```javascript
+const compose = (f, g) => x => f(g(x));
+
+var toUpperCase = word => word.toUpperCase();
+var split = x => (str => str.split(x));
+
+var f = compose(split(' '), toUpperCase);
+console.log(f('aaa bbb'));  // ["AAA", "BBB"]
+/**
+ * 执行 f('aaa bbb')
+ *
+ * - x='aaa bbb'; g=toUpperCase; f=split(x=' ')
+ * - g=toUpperCase('aaa bbb')='AAA BBB'
+ * - f='AAA BBB'.split(' ')=["AAA", "BBB"]
+ */
+```
+这种风格能够帮助我们减少不必要的命名，让代码保持简洁和通
+用。
