@@ -23,6 +23,7 @@
 - [jQuery核心内幕](https://github.com/rel-start/Notes/blob/master/ECMAScript/jQuery-CODE.md)
 - [ES5练习](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES5%20practice.md)
 - [JS与QA工程师](https://github.com/rel-start/Notes/blob/master/ECMAScript/JS%20and%20QA%20Engineer.md)
+- [JS函数式编程](https://github.com/rel-start/Notes/blob/master/ECMAScript/JS%20Functional%20Programming.md)
 
 ### Node
 - [Node入门](https://github.com/rel-start/Notes/blob/master/Node/Introduction%20to%20Node.md)
