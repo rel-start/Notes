@@ -34,13 +34,13 @@
 2. 不可改变变量。在函数式编程中，我们通常理解的变量在函数式编程中也被函数代替了：在函数式编程中变量仅仅代表某个表达式。这里所说的'变量'是不能被修改的。所有的变量只能被赋一次初值。
 3. `map` & `reduce` 他们是最常用的函数式编程的方法。
 
-<p>上面的总结就是：</p>
+**上面的总结就是：**
 
-1. 函数式“第一等公民”
-2. 只用“表达式”，不用“语句”
-3. 没有“副作用”
-4. 不修改状态
-5. 引用透明（函数运行只靠参数）
+> 1. 函数式“第一等公民”
+> 2. 只用“表达式”，不用“语句”
+> 3. 没有“副作用”
+> 4. 不修改状态
+> 5. 引用透明（函数运行只靠参数）
 
 <hr/>
 <h2>函数式编程常用核心概念</h2>
@@ -81,13 +81,13 @@ var checkage = age => age > 18;
 - 在不纯的版本中，`checkage` 不仅取决于 `age` 还有外部依赖的变量 `min`。
 - 纯的 `checkage` 把关键数字 `18` 硬编码在函数内部，扩展性比较差，柯里化优雅的函数式解决。
 
-<h2>纯度和幂等性</h2>
+<h3>纯度和幂等性</h3>
 
 > 幂等性是指执行无数次后还具有相同的效果，同一的参数运行一次函数应该与连续两次结果一致。幂等性在函数式编程中与纯度相关，但有不一致。
 
 `Math.abs(Math.abs(-42))`
 
-<h2>偏应用函数</h2>
+<h3>偏应用函数</h3>
 
 > 传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。
 偏函数之所以“偏”，在就在于其只能处理那些能与至少一个`case`语句匹配的输入，而不能处理所有可能的输入。
@@ -109,7 +109,7 @@ const add1More = add3.bind(null, 2, 3) // (c) => 2 + 3 + c
 add1More(4);  // 9
 ```
 
-<h2>函数的柯里化</h2>
+<h3>函数的柯里化</h3>
 
 > 柯里化（Curried）通过偏应用函数实现。
 传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的函数。（偏应用函数拿函数作为参数，而柯里化不一定）
@@ -171,7 +171,7 @@ filter(haveSpace)(["abcdefg", "Hello World"]); // ["Hello World"]
 ```
 事实上柯里化是一种“预加载”函数的方法，通过传递较少的参数，得到一个已经记住了这些参数的新函数，某种意义上讲，这是一种对参数的“缓存”，是一种非常高效的编写函数的方法；
 
-<h2>函数组合</h2>
+<h3>函数组合</h3>
 
 > 纯函数以及如何把它柯里化写出的洋葱代码 `h(g(f(x)))`，为了解决函数嵌套的问题，我们需要用到"函数组合"
 
@@ -218,7 +218,7 @@ last([1,2,3,4,5]); // 5
 + console.log(res([1, 2, 3, 4, 5]));
 ```
 
-<h2>Point Free</h2>
+<h3>Point Free</h3>
 
 把一些对象自带的方法转化成纯函数，不要命名转瞬即逝的中间变量。
 
@@ -231,8 +231,13 @@ const f = str => str.toUpperCase().split(' ');
 **下面是优化后的代码**
 
 ```javascript
-const compose = (f, g) => x => f(g(x));
+const compose = (f, g) => {
+return x => {
+  return f(g(x));
+};
+}
 
+// 暴露出来，可以多处复用
 var toUpperCase = word => word.toUpperCase();
 var split = x => (str => str.split(x));
 
@@ -248,3 +253,615 @@ console.log(f('aaa bbb'));  // ["AAA", "BBB"]
 ```
 这种风格能够帮助我们减少不必要的命名，让代码保持简洁和通
 用。
+
+<h3>声明式与命令式代码</h3>
+
+> 命令式代码的意思就是，我们通过编写一条又一条指令去让计算机执行一些动作，这其中一般都会涉及到很多繁杂的细节。而声明式就要优雅很多了，我们通过写表达式的方式来声明我们想干什么，而不是通过一步一步的指示。
+
+```javascript
+//命令式
+let CEOs = [];
+for(var i = 0; i < companies.length; i++)
+ CEOs.push(companies[i].CEO)
+}
+
+//声明式
+let CEOs = companies.map(c => c.CEO);
+```
+
+<h3>函数式编程优缺点</h3>
+
+> 1. 函数式编程的一个明显的好处就是这种声明式的代码，对
+于无副作用的纯函数，我们完全可以不考虑函数内部是如何实
+现的，专注于编写业务代码。优化代码时，目光只需要集中在
+这些稳定坚固的函数内部即可。
+> 1. 相反，不纯的函数式的代码会产生副作用或者依赖外部系
+统环境，使用它们的时候总是要考虑这些不干净的副作用。在
+复杂的系统中，这对于程序员的心智来说是极大的负担。
+
+<hr/>
+<h2>惰性求值、惰性函数、惰性链</h2>
+
+惰性函数：重写函数
+```javascript
+function eventBinderGenerator() {
+  if (window.addEventListener) {
+    // 重写，就不需要判断了
+    return function (element, type, handler) {
+      element.addEventListener(type, handler, false);
+    }
+  } else {
+    // 重写
+    return function (element, type, handler) {
+      element.attachEvent('on' + type, handler.bind(element, window.event));
+    }
+  }
+}
+```
+
+<hr/>
+<h2>高阶函数</h2>
+
+> 函数当参数，把传入的函数做一个封装，然后返回这个封装函数，达到更高程度的抽象
+
+```javascript
+// 命令式 reduce
+var add = (a, b) => a + b;
+var math = (func, array) => func(array[0], array[1]);
+
+math(add, [1, 2])  // 3
+```
+
+相当于 `reduce` 的功能
+
+```javascript
+var res = [1, 2].reduce((a, b) => a + b);
+// => 3
+
+
+var sum = fn => (arr => arr.reduce(fn));
+var add = (a, b) => a + b;
+var aa = sum(add);
+var bb = aa([1,2]);
+```
+
+**高阶函数**
+
+> - 它是一等公民
+> - 它已一个函数作为参数
+> - 已一个函数作为返回结果
+
+<hr/>
+<h2>尾递归优化<sup><a href="http://es6.ruanyifeng.com/#docs/function#%E5%B0%BE%E8%B0%83%E7%94%A8%E4%BC%98%E5%8C%96">url</a></sup> <sup><a href="https://en.wikipedia.org/wiki/Tail_call">维基百科</a></sup></h2>
+
+函数调用自身，称为递归。如果尾调用自身，就称为尾递归。
+
+递归需要保存大量的调用记录，很容易发生栈溢出错误，如果使用尾递归优化，将递归变成循环，那么只需要保存一个调用记录，这样就不会发生栈溢出错误了。
+
+```javascript
+function factorial(n) {
+  if (n === 1) return 1;
+  return n * factorial(n - 1);
+}
+```
+
+上面代码是一个阶乘函数，计算`n`的阶乘，最多需要保存n个调用记录，复杂度 `O(n)` 。
+
+如果改写成尾递归，只保留一个调用记录，复杂度 `O(1) `。
+
+```javascript
+function factorial(n, total) {
+  if (n === 1) return total;
+  return factorial(n - 1, n * total);
+} // 尾调用自身
+
+factorial(5, 1) // 120
+```
+
+还有一个比较著名的例子，就是计算 Fibonacci 数列，也能充分说明尾递归优化的重要性。
+
+非尾递归的 Fibonacci 数列实现如下。
+
+```javascript
+function Fibonacci (n) {
+  if ( n <= 1 ) {return 1};
+
+  return Fibonacci(n - 1) + Fibonacci(n - 2);
+}
+
+Fibonacci(10) // 89
+Fibonacci(100) // 超时
+Fibonacci(500) // 超时
+```
+
+尾递归优化过的 Fibonacci 数列实现如下。
+
+```javascript
+function Fibonacci2 (n , ac1 = 1 , ac2 = 1) {
+  if( n <= 1 ) {return ac2};
+
+  return Fibonacci2 (n - 1, ac2, ac1 + ac2);
+}
+
+Fibonacci2(100) // 573147844013817200000
+Fibonacci2(1000) // 7.0330367711422765e+208
+Fibonacci2(10000) // Infinity
+
+/**
+ * f(6)
+ * Fibonacci2(6,1,1)
+ * Fibonacci2(5,1,2)
+ * Fibonacci2(4,2,3)
+ * Fibonacci2(3,3,5)
+ * Fibonacci2(2,5,8)
+ * Fibonacci2(1,8,13)
+ */
+```
+ES6强制使用尾递归
+
+<h3>尾调用与尾递归的区别</h3>
+
+> - 尾调用是最后一部调用另外一个函数
+> - 尾递归是最后一部调用自身
+
+**`indexOf`实现取字符串中有多少个`'wo'`**
+
+```javascript
+function howmany(str, reg) {
+  // reg 为空字符串或 不是字符串，直接返回 0
+  if (reg === '' || typeof reg !== 'string') return 0;
+
+  return (function fn(index, counter = 0) {
+    if (index === -1) {
+      return counter;
+    }
+
+    return fn(str.indexOf(reg, index + 1), ++counter);
+  })(str.indexOf(reg));
+}
+
+/**
+ * howman函数：(howman)str='wofdsfadsfwow'; (howman)reg='wo'
+ * 第1次.(howman)fn函数：str.indexOf(reg)='wofdsfadsfwow'.indexOf('wo')=0; 也就是(fn)index=0; counter=0
+ *     - 进入fn函数：return fn('wofdsfadsfwow'.indexOf('wo'), 1)
+ * 第2次.(howman)fn函数：index=10; counter=1
+ *     - 进入fn函数：return fn('wofdsfadsfwow'.indexOf('wo'), 11)
+ * 第3次.(howman)fn函数：index=-1; counter=2
+ *     - 最终返回 2
+ */
+
+console.log(howmany('wofdsfadsfwow', 'wo'));
+```
+
+<h3>递归函数的改写</h3>
+尾递归的实现，往往需要改写递归函数，确保最后一步只调用自身。做到这一点的方法，就是把所有用到的内部变量改写成函数的参数。比如上面的例子，阶乘函数 `factorial` 需要用到一个中间变量`total`，那就把这个中间变量改写成函数的参数。这样做的缺点就是不太直观，第一眼很难看出来，为什么计算5的阶乘，需要传入两个参数`5`和`1`？
+
+两个方法可以解决这个问题。方法一是在尾递归函数之外，再提供一个正常形式的函数。
+
+```javascript
+function tailFactorial(n, total) {
+  if (n === 1) return total;
+  return tailFactorial(n - 1, n * total);
+}
+
+function factorial(n) {
+  return tailFactorial(n, 1);
+}
+
+factorial(5) // 120
+```
+
+上面代码通过一个正常形式的阶乘函数`factorial`，调用尾递归函数`tailFactorial`，看起来就正常多了。
+
+函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。这里也可以使用柯里化。
+
+```javascript
+function currying(fn, n) {
+  return function (m) {
+    return fn.call(this, m, n);
+  };
+}
+
+function tailFactorial(n, total) {
+  if (n === 1) return total;
+  return tailFactorial(n - 1, n * total);
+}
+
+const factorial = currying(tailFactorial, 1);
+
+factorial(5) // 120
+```
+
+上面代码通过柯里化，将尾递归函数`tailFactorial`变为只接受一个参数的`factorial`。
+
+第二种方法就简单多了，就是采用 ES6 的函数默认值。
+
+```javascript
+function factorial(n, total = 1) {
+  if (n === 1) return total;
+  return factorial(n - 1, n * total);
+}
+
+factorial(5) // 120
+```
+
+上面代码中，参数`total`有默认值`1`，所以调用时不用提供这个值。
+
+总结一下，递归本质上是一种循环操作。纯粹的函数式编程语言没有循环操作命令，所有的循环都用递归实现，这就是为什么尾递归对这些语言极其重要。对于其他支持“尾调用优化”的语言（比如 Lua，ES6），只需要知道循环可以用递归代替，而一旦使用递归，就最好使用尾递归。
+
+<hr/>
+<h2>尾递归优化的实现</h2>
+尾递归优化只在严格模式下生效，那么正常模式下，或者那些不支持该功能的环境中，有没有办法也使用尾递归优化呢？回答是可以的，就是自己实现尾递归优化。
+
+它的原理非常简单。尾递归之所以需要优化，原因是调用栈太多，造成溢出，那么只要减少调用栈，就不会溢出。怎么做可以减少调用栈呢？就是采用“循环”换掉“递归”。
+
+下面是一个正常的递归函数。
+
+```javascript
+function sum2(x, y) {
+  console.trace('sum22222222222');
+  if (y > 0) {
+    return sum(x + 1, y - 1);
+  } else {
+    return x;
+  }
+}
+sum2(1, 100000);
+// => Uncaught RangeError: Maximum call stack size exceeded
+```
+
+**`sum2(1,4);`的堆栈跟踪**
+
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/wdyyh1.png" /></p>
+
+上面代码中，`sum`是一个递归函数，参数x是需要累加的值，参数`y`控制递归次数。一旦指定`sum`递归 `100000` 次，就会报错，提示超出调用栈的最大次数。
+
+蹦床函数（trampoline）可以将递归执行转为循环执行。
+
+```javascript
+function trampoline(f) {
+  // if (f && f instanceof Function) { f = f(); }
+  // 1. if 只做判断，判断一次之后，便不会再回来了。
+  // 这里改用 if 的话，一次执行函数就 return。返回的是 fn 函数
+
+  // 2. while 的话，循环，直到结果为false，才跳出来。
+  // 只有到 f 不为函数才能执行到 return。也就是下面的 sum 函数 return x 才行
+  while (f && f instanceof Function) {
+    f = f();
+  }
+  return f;
+}
+
+function sum(x, y) {
+  console.trace();
+  if (y > 0) {
+    // bind 的话应该是 只会跟踪 2 个栈。
+    // 不用 bind 也就失去效果了
+    return sum.bind(null, x + 1, y - 1);
+  } else {
+    return x;
+  }
+}
+
+trampoline(sum(1,5));
+// => 100001
+```
+
+蹦床函数并不是真正的尾递归优化，下面的实现才是。
+
+**`trampoline(sum(1,5));`的堆栈跟踪**
+
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/wdyyh2.png" /></p>
+
+
+```javascript
+function tco(f) {
+  var value;
+  var active = false;
+  var accumulated = [];
+  
+
+  return function accumulator() {
+    accumulated.push(arguments);
+    if (!active) {
+      active = true;
+      while (accumulated.length) {
+        value = f.apply(this, accumulated.shift());
+      }
+      active = false;
+      return value;
+    }
+  };
+}
+
+var sum1 = tco(function(x, y) {
+  console.trace('================');
+  if (y > 0) {
+    return sum1(x + 1, y - 1)
+  }
+  else {
+    return x
+  }
+});
+
+sum1(1, 100000);
+
+/** sum(1, 5)
+  * 执行 tco() = fn accumulator();
+  *  - 第1：{tco>accumulator}。 args: [1, 5]; accumulated.length = 2; f=ddd(1, 5); this=window; active=true
+  *  - 第2：{ddd>sum1}。  sum1(2, 4); sum1 = tco() 返回的函数(惰性函数)，没有active=false这一步了; 还没有跳出 while
+  *  - 第3：当前还没跳出 while。但 accumulated 又被push为 [2,4]，这次没有进入 if。回到原来的 while 循环中，accumulated.length = 1
+  *  - 又继续类似 操作第2 第3，直到 sum1(6, 0)；
+  *  - 第4：{tco=accumulator}。value = f.apply(this, [6,0]) = x = 6; accumulated.length=0，跳出 while 循环了
+  *  - 接下来 active = false; return 6;
+  */
+```
+
+**`sum1(1, 5);`的堆栈跟踪**
+
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/wdyyh3.png" /></p>
+
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/ctdg.png" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/xsdg.png" /></p>
+
+<h2>尾递归问题？</h2>
+
+1. 尾递归的判断标准是函数运行【最后一步】是否调用自身，而不是 是否在函数的【最后一行】调用自身，最后一行调用其他函数 并返回叫尾调用。
+2. 按道理尾递归调用调用栈永远都是更新当前的栈帧而已，这样完全避免了爆栈的危险。但是现如今的浏览器并未完全支持☹原因有二①在引擎层面消除递归是一个隐式的行为，程序员意识不到。②堆栈信息丢失了 开发者难已调试。
+3. 既然浏览器不支持我们可以把这些递归写成while~
+
+<h2>闭包</h2>
+
+> 如下例子，虽然外层的 makePowerFn 函数执行完毕，栈上的调用
+帧被释放，但是堆上的作用域并不被释放，因此 power 依旧可以
+被 powerFn 函数访问，这样就形成了闭包
+
+```javascript
+function makePowerFn(power) { 
+ function powerFn(base) {
+ return Math.pow(base, power);
+ }
+ return powerFn;
+}
+var square = makePowerFn(2); 
+square(3); // 9
+```
+
+<hr/>
+<h2>范畴与容器</h2>
+
+> 1. 我们可以把“范畴”想象成是一个容器，里面包含两样东西。值（value）、值得变形关系，也就是函数。
+> 2. 范畴论使用函数，表达范畴之间的关系。
+> 3. 伴随着范畴论的发展，就发展出一整套函数的运算方法。这套方法起初只用于**数学运算**，后来有人将它在计算机上实现了，就变成了今天的”函数式编程"。
+> 4. 本质上，函数式编程只是范畴论的运算方法，跟数理逻辑、微积分、、行列式是同一类东西，都是数学方法，只是碰巧它能用来写程序。为什么函数式编程要求函数必须是纯的，不能有副作用？因为它是一种数学运算，原始目的就是求值，不做其他事情，否则就无法满足函数运算法则了。
+
+> 1. 函数不仅可以用于同一个范畴之中值的转换，还可以用于将一个范畴转成另一个范畴。这就涉及到了函子（Functor）。
+> 2. 函子是函数式编程里面最重要的数据类型，也是基本的运算单位和功能单位。它首先是一种范畴，也就是说，是一个容器，包含了值和变形关系。比较特殊的是，它的变形关系可以依次作用于每一个值，将当前容器变形成另一个容器。
+
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/fcyrq.png" /></p>
+
+<h2>容器、Functor（函子）</h2>
+`$(...)` 返回的对象并不是一个原生的DOM对象，而是对于原生对象的一种封装，这在某种意义上就是一个“容器”（但它并不函数式）。
+
+> - `Functor`（函子）遵守一些特定规则的容器类型。
+> - 任何具有`map`方法的数据结构，都可以当作函子的实现。
+> - `Functor` 是一个对于函数调用的抽象，我们赋予容器自己去调用函数的能力。把东西装进一个容器，只留出一个借口 `map` 给容器外的函数，`map` 一个函数时，我们让容器自己来运行这个函数，这样容器就可以自由地选择何时何地如何操作这个函数，以致于拥有惰性求值、错误处理、异步调用等等非常牛掰的特性。
+
+**例1**
+```javascript
+var Container = function (x) {
+  this.__value = x;
+}
+// 函数式编程一般约定，函子有一个of方法
+Container.of = x => new Container(x);
+// 一般约定，函子的标志就是容器具有map方法。该方法将容器里面的每一个值，映射到另一个容器
+Container.prototype.map = function (f) {
+  return Container.of(f(this.__value));
+}
+
+Container.of(3)                 // 结果 Container {__value: 4}
+    .map(x => x + 1)            // 结果 Container {__value: 4}
+    .map(x => 'Result is ' + x);   // 结果 Container {__value: 'Result is 4'};
+```
+上述代码中，产生了 3 个函子(就是3个`new Container`)
+
+**map**
+```javascript
+class Functor { 
+ constructor(val) { 
+ this.val = val; 
+ } 
+ map(f) { 
+ return new Functor(f(this.val)); 
+ } 
+} 
+(new Functor(2)).map(function (two) { 
+ return two + 2; 
+}); 
+// => Functor {val: 4}
+```
+上面最后一行，有点像数组的 `arr.map()`。`arr`也是个对象
+
+> - 上面的代码中，`Functor`是一个函子，它的`map`方法接受函数`f`作为参数，然后返回一个新的函子，里面包含的值是被`f`处理过的`(f(this.val))`。
+> - 一般约定，函子的标志就是容器具有`map`方法。该方法将容器里面的每一个值，映射到另外一个容器。
+上面的例子说明，函数编程里面的运算，都是通过函子完成，即运算不直接针对值，而是针对这个值得容器----函子。函子本身具有对外接口（`map`方法），各种函数就是运算符，通过接口接入容器，引发容器里面的值得变形。
+> - 因此，学习函数式编程，实际上就是学习函子的各种运算。由于可以把运算方法封装在函子里面，所以又衍生出各种不同类型的函子，有多少种运算，就有多少种函子。函数式编程就变成了运用不同的函子，解决实际问题。
+
+<h3>of 方法</h3>
+
+> - 你可能注意到了，上面生成新的函子的时候，用了
+new命令。这实在太不像函数式编程了，因为new命令是
+面向对象编程的标志。 。
+> - 函数式编程一般约定，函子有一个of方法，用来生成新
+的容器
+
+```javascript
+class Functor {
+  constructor(val) {
+    this.val = val;
+  }
+
+  map(f) {
+    return new Functor(f(this.val));
+  }
+
+  static of(x){
+    return new Functor(x);
+  }
+}
+Functor.of(2).map(function (two) {
+  return two + 2;
+});
+// => Functor {val: 4}
+```
+
+<h3>Maybe 函子(if)</h3>
+
+```javascript
+Functor.of(null).map(x => x.toUpperCase());
+// => TypeError: Cannot read property 'toUpperCase' of null
+
+class Maybe extends Functor {
+  constructor(val) {
+    super(val);
+  }
+
+  map(f) {
+    return this.val ? Maybe.of(f(this.val)) : Maybe.of(null);
+  }
+
+  static of (x) {
+    return new Maybe(x);
+  }
+}
+
+Maybe.of(null).map(x => x.toUpperCase());
+// => // Maybe(null)
+```
+
+下面容器我们称之为 Maybe（原型来⾃于Haskell）
+```javascript
+class Maybe extends Functor {
+  constructor(val) {
+    super(val);
+  }
+  
+  map(f) {
+    return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.val));
+  }
+    
+  isNothing() {
+    return (this.val === null || this.val === undefined);
+  }
+
+  static of (x) {
+    return new Maybe(x);
+  }
+}
+```
+
+<h3>错误处理、Either</h3>
+
+> 1. 我们的容器能做的事情太少了，`try/catch/throw` 并不是纯的(err参数)，因为它从外部接管了我们的函数，并且这个函数时抛弃了它的返回值。
+> 2. `Promise` 是可以调用 `catch` 来集中处理错误的。
+> 3. 事实上 `Either` 并不只是用来做错误处理的，它表示了逻辑或，范畴学里的 `coproduct`。
+
+<h3>Either</h3>
+条件运算符 `if...else` 是最常见的运算之一，函数编程里面，使用 `Either` 函子表达。`Either` 函子内部有两个值：左值（left）和右值（Right）。右值是正常情况下使用的值，左值是右值不存在时使用的默认值。
+
+```javascript
+class Either extends Functor { // 感觉这里不需要继承，因为所有方法都是重写
+  constructor(left, right) {
+    super(); delete this.val;
+    this.left = left;
+    this.right = right;
+  }
+
+  map(f) {
+    // Right有值 就右值执行函数，反之给 Left 调用
+    return this.right ? Either.of(this.left, f(this.right)) : Either.of(f(this.left), this.right);
+  }
+
+  static of (left, right) {
+    return new Either(left, right);
+  }
+}
+
+var addOne = x => x + 1;
+
+Either.of(5, 6).map(addOne);
+// => Either {left: 5, right: 7}
+Either.of(5, null).map(addOne);
+// => Either {left: 6, right: null}
+
+// currentUser.address为空，用 Left值 代替
+var currentUser = {};
+var updateField = x => x;
+Either.of({
+  address: 'xxx'
+}, currentUser.address).map(updateField);
+// => Either {left: {address: 'xxx'}, right: undefined}
+```
+代替 `try...catch`
+
+**错误处理、Either**
+```javascript
+var Left = function (x) {
+  this.__value = x;
+}
+var Right = function (x) {
+  this.__value = x;
+}
+Left.of = function (x) {
+  return new Left(x);
+}
+Right.of = function (x) {
+  return new Right(x);
+}
+
+Left.prototype.map = function (f) {
+  return this;
+}
+Right.prototype.map = function (f) {
+  return Right.of(f(this.__value));
+}
+```
+
+`Left` 和 `Right` 唯一的区别就在于 `map` 方法的实现，`Right.map` 的行为和我们之前提到的 `map` 函数一样。但是 `Left.map` 就很不同了：它不会对容器做任何事情，只是很简单地把这个容器拿进来又扔出去。这个特性意味着，`Left` 可以用来传递一个错误消息。
+
+```javascript
+var getAge = user => user.age ? Right.of(user.age) : Left.of("ERROR!");
+getAge({name: 'stark', age: '21'}).map(age => 'Age is ' + age);
+// => Right {__value: "Age is 21"}
+getAge({name: 'stark'}).map(age => 'Age is ' + age);
+// => Left {__value: "ERROR!"}
+```
+
+`Left` 可以让调用链中任意一环的错误立刻返回到调用链的尾部，这给我们错误处理带来了很大的方便，再也不用一层又一层的 `try/catch`。
+
+<h3>AP函子</h2>
+
+> 函子里面包含的值，完全可能是函数。我们可以想象这样一种情况，一个函子的值是数值，另一个函子的值是函数。
+
+```javascript
+class Ap extends Functor {
+  constructor(val) {
+    super(val);
+  }
+
+  ap(F) {
+    // 下面 f 变量的 F.val=2; this.val=addTwo(2); Ap.of(4)=new Ap(4);
+    return Ap.of(this.val(F.val));
+  }
+
+  static of (x) {
+    return new Ap(x);
+  }
+}
+var addTwo = function (x) {
+  return x + 2;
+}
+
+var f = Ap.of(addTwo) // Ap {val: ƒ}
+          .ap(Functor.of(2)); // Ap {val: 4}
+```
