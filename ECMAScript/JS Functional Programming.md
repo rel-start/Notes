@@ -720,6 +720,8 @@ Functor.of(2).map(function (two) {
 <hr/>
 <h3>Maybe 函子(if)</h3>
 
+> 函子接受各种函数，处理容器内部的值。这里就有一个问题，容器内部的值可能是一个空值（比如`null`），而外部函数未必有处理空值的机制，如果传入空值，很可能就会出错。
+
 ```javascript
 Functor.of(null).map(x => x.toUpperCase());
 // => TypeError: Cannot read property 'toUpperCase' of null
