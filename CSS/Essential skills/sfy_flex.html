@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双飞翼布局flex</title>
+</head>
+<body>
+    <style>
+        * { margin: 0; box-sizing: border-box; }
+        .container { display: flex; }
+        .item { border: 1px dashed; }
+        .middle { flex-grow: 1; order: 2; }
+        .left { order: 1; }
+        .right { order: 3; }
+    </style>
+    <div class="container">
+        <div class="middle item">
+            middle
+            <p>段落</p>
+        </div>
+        <div class="left item">left</div>
+        <div class="right item">right</div>
+    </div>
+    这是后面的内容
+</body>
+</html>
