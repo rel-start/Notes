@@ -18,7 +18,9 @@ var a = 25;
 
 <hr/>
 <h3>函数提升</h3>
+
 函数提升要比变量提升高
+
 ```javascript
 (function () {
   var a = 20;
@@ -279,6 +281,7 @@ s.getName();  // hello
 
 <hr/>
 <h3>同步队列与异步队列</h3>
+
 ```html
 <ul>
   <li>1</li>
@@ -326,6 +329,7 @@ console.log(m.v); // undefined
 
 <hr/>
 <h3>为什么while(true)会死循环</h3>
+
 ```javascript
 <button id="text">按钮</button>
 $('#text').click(function (){
@@ -402,6 +406,7 @@ p1();
 JS执行外面都有一个匿名函数包裹，相当于Java的 `mian`，因为js的执行机制所以 `function test(){}` 就是一个闭包(外面会包裹一个匿名函数)。如果正常C `function test(){}` 不是闭包
 
 <h3>Lexical Scope</h3>
+
 `eval()`不会解绑词法作用域，万一 `xxbb` 用到了呢
 
 ```javascript
@@ -418,7 +423,9 @@ function t1() {
 t1()()();
 ```
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/eval01.png" /></p>
+
 控制台 `Memory` 面板下获取堆快照
+
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/eval03.png" /></p>
 
 以及没有 `eval` 的对比
