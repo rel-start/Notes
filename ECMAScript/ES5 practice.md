@@ -353,7 +353,7 @@ function Student(val) {
 let ty = new Student('ty');
 let cl = new Student('cl');
 ```
-<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc01.gif" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc01.png" /></p>
 
 ```javascript
 function Student(val) {
@@ -365,7 +365,7 @@ let cl = new Student('cl');
 // 这里 gc 不一定会立马执行(这里代码比较少，立马gc了)。解决办法 WeakMap
 ty = null;
 ```
-<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc02.gif" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc02.png" /></p>
 
 **闭包 与 gc**
 ```javascript
@@ -383,7 +383,7 @@ let p1 = new TFactory('张三');
 p1();
 p1 = null;  // 这里 gc 不回收
 ```
-<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc03.gif" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc03.png" /></p>
 
 ```javascript
 function Student(val) {
