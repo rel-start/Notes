@@ -402,7 +402,7 @@ let p1 = new TFactory('张三');
 p1();
 ```
 
-<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc04.gif" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/gc04.png" /></p>
 JS执行外面都有一个匿名函数包裹，相当于Java的 `mian`，因为js的执行机制所以 `function test(){}` 就是一个闭包(外面会包裹一个匿名函数)。如果正常C `function test(){}` 不是闭包
 
 <h3>Lexical Scope</h3>
@@ -476,7 +476,9 @@ init();
 ```
 
 **with**
+
 一旦 `with` 放弃当前所有变量回收，现在浏览器好像删掉了
+
 ```javascript
 var a = 1;
 var obj = {
