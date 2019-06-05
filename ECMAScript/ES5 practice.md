@@ -480,15 +480,14 @@ init();
 ```javascript
 var a = 1;
 var obj = {
-  apple: "hello",
-  next: undefined
+  apple: "hello"
 };
 
 with(obj) {
   next: 'world'
 }
-console.log(obj.next);
-console.log(next);
+console.log(obj.next);  // undefined
+console.log(next);  // 'world'
 ```
 
 
