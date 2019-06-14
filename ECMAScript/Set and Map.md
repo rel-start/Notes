@@ -3,6 +3,8 @@
 标签（空格分隔）： ES6
 
 ---
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/set-xmind.png" /></p>
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/map-xmind.png" /></p>
 
 <h2>Set</h2>
 
