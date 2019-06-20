@@ -459,6 +459,10 @@ function t1() {
 ```
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/eval04.png" /></p>
 
+**try catch**
+
+`try{}catch(e){}` 也会延长作用域 `e`
+
 **new Function相关**
 
 ```javascript
@@ -492,6 +496,48 @@ console.log(obj.next);  // undefined
 console.log(next);  // 'world'
 ```
 
+<h3>prototype、__proto__、constructor相关</h3>
+
+```javascript
+Object.prototype.a = 'a';
+Function.prototype.a = 'a1';
+function Person(){}
+var yideng = new Person();
+console.log(Person.a); 
+// => 'a1'
+console.log(yideng.a);
+// => 'a'
+console.log(1..a);  // 1. 是个对象
+// => 'a'
+console.log(1.a);   // 报错。(1).a这样就行
+console.log(yideng.__proto__.__proto__.constructor.constructor.constructor); // 看下面图的关系
+```
+
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/ppc.png" /></p>
+
+上图的关系大致如下：
+```javascript
+function Doo(){}
+var d1 = new Doo();
+var o1 = new Object();
+var f1 = new Function();
+
+d1.__proto__ == Doo.prototype;
+o1.__proto__ == Object.prototype;
+f1.__proto__ == Function.prototype;
+
+Doo.prototype.constructor == function Doo(){}
+Object.prototype.constructor == function Object(){}
+Function.prototype.constructor == function Function(){}
+
+Doo.__proto__ == Function.prototype;
+Object.__proto__ == Function.prototype;
+Function.__proto__ == Function.prototype;
+
+Object.prototype.__proto__ == null;
+Doo.prototype.__proto__ == Object.prototype;
+Function.prototype.__proto__ = Object.prototype;
+```
 
 <hr/>
 <h3>练习</h3>
