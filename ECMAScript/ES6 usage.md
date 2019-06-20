@@ -1,12 +1,13 @@
 ﻿# ES6 usage
 
-标签（空格分隔）： Notes
+标签（空格分隔）： ES6
 
 ---
 
-<a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20let%20%26%20const.md">2. let 和 const 命令</a>
-<a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Symbol.md">12. Symbol</a>
-<a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/set%20and%map.md">13. Set 和 Map 数据结构</a>
+- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20let%20%26%20const.md">2. let 和 const 命令</a>
+- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Symbol.md">12. Symbol</a>
+- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Set%20and%Map.md">13. Set 和 Map 数据结构</a>
+- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Set%20and%Map.md">14. Proxy</a>
 
 
 
