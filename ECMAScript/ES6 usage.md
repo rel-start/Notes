@@ -7,7 +7,8 @@
 - <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/ES6%20let%20%26%20const.md">2. let 和 const 命令</a>
 - <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Symbol.md">12. Symbol</a>
 - <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Set%20and%Map.md">13. Set 和 Map 数据结构</a>
-- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Set%20and%Map.md">14. Proxy</a>
+- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Proxy.md">14. Proxy</a>
+- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Reflect.md">15. Reflect</a>
 
 
 
