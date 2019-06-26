@@ -4,8 +4,6 @@
 
 ---
 
-初始化 npm
-
 **目录结构**
 
 <p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/TEXT_node-koa-swig(books).png"></p>
