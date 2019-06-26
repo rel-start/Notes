@@ -12,6 +12,8 @@
 - [PHP系列](https://github.com/rel-start/Notes/blob/master/PHP/Catalog_php.md)
 - [Java系列](https://github.com/rel-start/Notes/blob/master/Java/Catalog_java.md)
 
+- [练习](https://github.com/rel-start/Notes/blob/master/Test/Catalog_test.md)
+
 
 
 
