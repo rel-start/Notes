@@ -1,0 +1,41 @@
+{% extends '../layouts/layout.html' %}
+
+{% block title %}vues页面{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/stylesheet/index.css">
+{% endblock %}
+
+{% block content %}
+[[data]]
+
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="nomodule">
+  import("/scripts/index.js").then(_ => {
+      console.log(_.default)
+    });
+  </script>
+<script type="module" src="https://cdn.bootcss.com/systemjs/3.1.6/system.min.js"></script>
+<script type="nomodule">
+  System.import("/scripts/index-bundle.js").then(_ => {
+        console.log(_.default);
+    })
+  </script>
+
+<script type="module" src="/scripts/index-bundle.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script>
+  var app6 = new Vue({
+    el: '#app-6',
+    data: {
+      message: 'Hello Vue!'
+    }
+  })
+</script>
+{% endblock %}
