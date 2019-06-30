@@ -283,6 +283,14 @@
 <hr/>
 <h2>让nginx跑起来</h2>
 
+- 在`Linux`下的两种安装方案：`yum`/`apt`安装、源码编译安装
+- 准备环境：`Linux`服务器、`gcc`编译器、`nginx`源代码
+- 获取`nginx`源码：`http://nginx.org`
+- 编译安装`nginx`源码
+- 配置规则
+
+<h3>安装 nginx</h3>
+
 ```javascript
 // 下载 nginx 压缩包
 # wget http://nginx.org/download/nginx-1.16.0.tar.gz
@@ -341,6 +349,95 @@ centos 提供的`nginx`的源自动化安装教程：https://www.cnblogs.com/son
 # ps aux | grep nginx
 ```
 
+<hr/>
+<h3>Nginx 常用功能</h3>
+
+1. Http代理，反向代理
+2. 负载均衡
+3. web缓存
+4. Nginx相关地址
+ - 源码：https://trac.nginx.org/nginx/browser
+ - 官网：http://www.nginx.org/
 
 
+<hr/>
+<h3>Nginx 配置文件结构</h3>
+ 
+默认的 `/etc/nginx/nginx.conf`
+ 
+```javascript
+# 配服务的用户身份
+user  nginx;
 
+# 最多有1个工作进程。
+worker_processes 1;
+```
+
+linux下只有多进程，实现多任务就需要主进程`master process`拉起子进程`worker process`
+<p><img src="https://raw.githubusercontent.com/rel-start/Notes/picture/picture/nginx01.png" /></p>
+
+进程并非越多越好，一般1个进程占`1`个`cup`核心
+
+```javascript
+# 错误日志
+error_log  /var/log/nginx/error.log warn;
+# nginx.pid 帮助操作系统管理进程
+pid        /var/run/nginx.pid;
+
+# 配置事件
+events {
+  # 工作连接数：同时并发多少连接
+  worker_connections  1024;
+}
+
+# 提供http服务
+http {
+  include       /etc/nginx/mime.types;
+  # http头默认以流的形式传输
+  default_type  application/octet-stream;
+  
+  # 日志输出的格式
+  log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+  # 访问日志的路径
+  access_log  /var/log/nginx/access.log  main;
+  
+  # 下面是一些开关
+  sendfile        on;
+  #tcp_nopush     on;
+  
+  # 长连接，65s不连接就断开
+  # keepalive_timeout  0;
+  keepalive_timeout  65;
+  
+  #gzip  on;
+}
+
+server {
+  # nginx默认端口
+  listen       80;
+  # 改成公网域名
+  server_name  localhost;
+}
+```
+
+<h3>nginx 配置反向代理</h3>
+
+```javascript
+...
+
+http {
+  upstream mysvr {
+    ip_hash;
+    server 192.168.10.121:3333 weight=2;
+    server 192.168.10.122:3333;
+  }
+  server {
+    location /	{																			      proxy_pass http://mysvr;
+  }
+}
+```
+
+- `weight=2`：表示2次`192.168.10.121`，1次`192.168.10.122`
+- `ip_hash`：不如第一次代理到`192.168.10.122`，那么以后都是这个ip，再也不会轮询
