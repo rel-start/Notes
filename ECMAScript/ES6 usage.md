@@ -1,6 +1,6 @@
 ﻿# ES6 usage
 
-标签（空格分隔）： ES6
+标签（空格分隔）： ECMAScript
 
 ---
 
@@ -8,6 +8,7 @@
 - <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Symbol.md">12. Symbol</a>
 - <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Set%20and%Map.md">13. Set 和 Map 数据结构</a>
 - <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Proxy.md">14. Proxy</a>
+- <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Iterator.md">15. Iterator</a>
 - <a href="https://github.com/rel-start/Notes/blob/master/ECMAScript/Reflect.md">15. Reflect</a>
 
 
