@@ -1,6 +1,6 @@
 ﻿# 从0到大论前端持续集成
 
-标签（空格分隔）： Notes
+标签（空格分隔）： Node
 
 ---
 
@@ -76,7 +76,8 @@ customElements.define('button-hello', ButtonHelloElement, {
 
 `yd` 文件的内容如下：
 
-`#!/usr/bin/env node`有点像 window 的环境变量，需要在 linux 或 Mac 
+`#!/usr/bin/env node` 这种叫`shebang`节点，windows下无法正确运行。
+这个链接中查找 [node bin/npm-postinstall](https://shapeshed.com/writing-cross-platform-node/)，好像是解决windows的方法
 
 ```javascript
 #!/usr/bin/env node
