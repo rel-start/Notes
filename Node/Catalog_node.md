@@ -15,6 +15,7 @@
 - [node基础api-process进程](https://github.com/rel-start/Notes/blob/master/Node/node-api-process.md)
 - [node基础api-querystring](https://github.com/rel-start/Notes/blob/master/Node/node-api-querystring.md)
 - [node线上部署](https://github.com/rel-start/Notes/blob/master/Node/node-prod.md)
+- [bigpipe](https://github.com/rel-start/Notes/blob/master/Node/bigpipe.md)
 
 
 

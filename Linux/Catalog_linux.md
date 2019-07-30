@@ -11,7 +11,9 @@
 - [后端语言核心知识](https://github.com/rel-start/Notes/blob/master/Linux/Backend%20language.md)
 - [http协议](https://github.com/rel-start/Notes/blob/master/Linux/Http-xieyi.md)
 - [http那些事(mvc)](https://github.com/rel-start/Notes/blob/master/Linux/MVC.md)
-- - [前端性能优化基础](https://github.com/rel-start/Notes/blob/master/Linux/cdn-etag.md)
+- [前端性能优化基础](https://github.com/rel-start/Notes/blob/master/Linux/cdn-etag.md)
+- [nginx缓存策略](https://github.com/rel-start/Notes/blob/master/Linux/Nginx-caching-strategy.md)
+
 
 
 
