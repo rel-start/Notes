@@ -1,6 +1,6 @@
 ﻿# Catalog_ecmascript
 
-标签（空格分隔）： Catalog
+标签（空格分隔）： Notes
 
 ---
 ![ECMAScript系列](https://raw.githubusercontent.com/rel-start/Notes/picture/picture/Catalog_ecmascript.png)
@@ -13,6 +13,7 @@
 - [ES5练习](https://github.com/rel-start/Notes/blob/master/ECMAScript/ES5%20practice.md)
 - [JS与QA工程师](https://github.com/rel-start/Notes/blob/master/ECMAScript/JS%20and%20QA%20Engineer.md)
 - [JS函数式编程](https://github.com/rel-start/Notes/blob/master/ECMAScript/JS%20Functional%20Programming.md)
+- [雅虎军规](https://github.com/rel-start/Notes/blob/master/ECMAScript/%E9%9B%85%E8%99%8E%E5%86%9B%E8%A7%84.md)
 
 
 
