@@ -11,6 +11,8 @@
 - [Linux系列](https://github.com/rel-start/Notes/blob/master/Linux/Catalog_linux.md)
 - [PHP系列](https://github.com/rel-start/Notes/blob/master/PHP/Catalog_php.md)
 - [Java系列](https://github.com/rel-start/Notes/blob/master/Java/Catalog_java.md)
+- [Typescript系列](https://github.com/rel-start/Notes/blob/master/Typescript/Catelog_typescript.md)
+- [React系列](https://github.com/rel-start/Notes/blob/master/Typescript/Catelog_react.md)
 
 - [练习](https://github.com/rel-start/Notes/blob/master/Test/Catalog_test.md)
 
